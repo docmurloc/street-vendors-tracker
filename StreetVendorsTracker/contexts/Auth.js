@@ -49,12 +49,22 @@ function useFirebaseAuth() {
         setLoading(false);
     }
 
+    const SignOut = async () => {
+        setLoading(true);
+
+        await auth().signOut();
+
+        setLoading(false);
+
+    }
+
     
 
     return {
         user,
         loading,
-        SignInWithGoogle
+        SignInWithGoogle,
+        SignOut
     };
 }
 
