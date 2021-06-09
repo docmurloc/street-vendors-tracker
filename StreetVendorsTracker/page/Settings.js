@@ -16,6 +16,10 @@ export default function Settings({ navigation }) {
             onPress={() => navigation.navigate('Profile')}
             />
             <Button
+            title="Your stand"
+            onPress={() => navigation.navigate('Vendors')}
+            />
+            <Button
             title="Sign out"
             onPress={() => SignOut()}
             />
