@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'; 
+import React, { useState, useEffect, useContext, createContext } from 'react'; 
 
 import { PermissionsAndroid } from "react-native";
 
@@ -19,6 +19,11 @@ function usePositionData() {
     const [position, setPosition] = useState(null);
     const [hasLocationPermission, setHasLocationPermission] = useState(false);
     const [isTracking, setIsTracking] = useState(null);
+
+
+    useEffect(() => {
+        console.log("position : ", position);
+    }, [position]);
 
     const askLocationPermission = async () => {
         try {
@@ -45,6 +50,7 @@ function usePositionData() {
             }
           } catch (err) {
             console.warn(err);
+            return false;
           }
     }
 
@@ -68,10 +74,10 @@ function usePositionData() {
     }
 
     const trackUser = () => {
-        if (hasLocationPermission) {
+        if (hasLocationPermission && isTracking == null) {
             const id = Geolocation.watchPosition(
                 (userPosition) => {
-                  console.log(userPosition);
+                  console.log("user position update",userPosition);
                   setPosition(userPosition);
                 },
                 (error) => {
@@ -86,6 +92,7 @@ function usePositionData() {
 
     const unTrackUser = () => {
         if (isTracking != null) {
+            console.log("untrack user");
             Geolocation.clearWatch(isTracking);
             setIsTracking(null);
         }
