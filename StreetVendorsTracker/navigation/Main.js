@@ -9,10 +9,8 @@ const Stack = createStackNavigator();
 
 export default function Main() {
     return (
-        <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={LoginPage} />
             </Stack.Navigator>
-        </NavigationContainer>
     );
 }
