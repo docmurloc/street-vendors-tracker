@@ -9,6 +9,7 @@ import { useAuth } from '../contexts/Auth';
 
 const Stack = createStackNavigator();
 
+import HomeNavigation from './Home'
 
 
 export default function Main() {
@@ -17,7 +18,16 @@ export default function Main() {
 
     return (
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={LoginPage} />
+                {user ? (
+                    <>
+                        <Stack.Screen name="Home" component={HomeNavigation} />
+                    </>
+
+                ): (
+                    <>
+                        <Stack.Screen name="Login" component={LoginPage} />
+                    </>
+                )}
             </Stack.Navigator>
     );
 }
