@@ -4,8 +4,7 @@ import auth from '@react-native-firebase/auth';
 
 import {
     GoogleSignin,
-} from '@react-native-google-signin/google-signin';
-  
+} from '@react-native-google-signin/google-signin';  
 
 const authContext = createContext();
 
@@ -33,6 +32,9 @@ function useFirebaseAuth() {
 
     const onAuthStateChanged = (dataUser) => {
         setUser(dataUser);
+
+
+
     }
 
 
