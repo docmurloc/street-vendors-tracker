@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "344872025261",
+    "project_id": "street-vendors-tracker",
+    "storage_bucket": "street-vendors-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344872025261:android:bf0ebb6e7f0ef9b7f45a24",
+        "android_client_info": {
+          "package_name": "com.streetvendorstracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344872025261-bnl9m326r3b5f53e66l5ph99fp0f0448.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.streetvendorstracker",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "344872025261-d74vtdh3kq3sf4lioc6va7ldjagcqqsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTS6_aP2LdTpzp8ocDr-LS8MzsCvjWwrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344872025261-d74vtdh3kq3sf4lioc6va7ldjagcqqsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
