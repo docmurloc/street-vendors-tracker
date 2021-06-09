@@ -32,9 +32,6 @@ function useFirebaseAuth() {
 
     const onAuthStateChanged = (dataUser) => {
         setUser(dataUser);
-
-
-
     }
 
 
@@ -58,8 +55,6 @@ function useFirebaseAuth() {
 
     }
 
-    
-
     return {
         user,
         loading,
@@ -67,18 +62,3 @@ function useFirebaseAuth() {
         SignOut
     };
 }
-
-const formatUser = (user) => {
-
-    const newUser = {
-        uid: user.uid,
-        email: user.email,
-        name: user.displayName,
-        provider: user.providerData[0].providerId,
-        photoUrl: user.photoURL,
-    };
-
-    firebase.database().ref('users/' + user.uid).update(newUser);
-
-    return newUser;
-};
