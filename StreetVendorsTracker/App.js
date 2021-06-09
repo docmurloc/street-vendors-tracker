@@ -14,7 +14,9 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './contexts/Auth';
-import { PositionProvider } from './contexts/Position'
+import { PositionProvider } from './contexts/Position';
+import { StandProvider } from './contexts/Stand'
+
 
 import MainNavigation from './navigation/Main';
 
@@ -24,10 +26,12 @@ const App = () => {
   return (
     <PositionProvider>
       <AuthProvider>
-        <NavigationContainer>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <MainNavigation />
-        </NavigationContainer>
+        <StandProvider>
+          <NavigationContainer>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+            <MainNavigation />
+          </NavigationContainer>
+        </StandProvider>
       </AuthProvider>
     </PositionProvider>
   );

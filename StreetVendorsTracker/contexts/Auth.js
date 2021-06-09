@@ -62,3 +62,15 @@ function useFirebaseAuth() {
         SignOut
     };
 }
+
+const formatUser = (user) => {
+
+    const newUser = {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName,
+        provider: user.providerData[0].providerId,
+        photoUrl: user.photoURL,
+    };
+    return newUser;
+};

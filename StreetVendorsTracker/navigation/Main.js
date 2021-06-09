@@ -10,6 +10,7 @@ import LoginPage from '../page/Login';
 import { useAuth } from '../contexts/Auth';
 
 
+
 const Stack = createStackNavigator();
 
 
@@ -26,7 +27,6 @@ export default function Main() {
                         <Stack.Screen name="Profile" component={ProfilePage} />
                         <Stack.Screen name="Vendors" component={VendorsPage} />
                     </>
-
                 ): (
                     <>
                         <Stack.Screen name="Login" component={LoginPage} />

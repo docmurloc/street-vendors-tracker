@@ -1,36 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Switch, TextInput, StyleSheet } from 'react-native';
 
-import { usePosition } from '../contexts/Position';
+import { useStand } from '../contexts/Stand';
 
 export default function Vendors() {
 
-    const {trackUser, unTrackUser, askLocationPermission, hasLocationPermission} = usePosition();
 
-    const enableTrackUser = async () => {
-        if (hasLocationPermission) {
-            trackUser();
-        } else {
-            askLocationPermission();
-        }
-    }
-
-    const unenableTrackUser = () => {
-        unTrackUser()
-    }
+    const {isEnabled,
+        toggleSwitch,
+        name,
+        setName,
+        description,
+        setDescrition,
+        link,
+        setlink,
+        phone,
+        setPhone,
+        saveStandInformation} = useStand();
 
     return (
         <View>
             <Text>Vendors page</Text>
-            <Button
-            title="enable tracking"
-            onPress={() => enableTrackUser()}
+            <Switch
+                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setName}
+                value={name}
+                placeholder="name..."
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setDescrition}
+                value={description}
+                placeholder="desciption..."
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setlink}
+                value={link}
+                placeholder="link..."
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setPhone}
+                value={phone}
+                placeholder="phone..."
             />
             <Button
-            title="unenable tracking"
-            onPress={() => unenableTrackUser()}
+                onPress={() => saveStandInformation()}
+                title="save"
+                color="#841584"
+                accessibilityLabel="Save stand information"
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+      height: 40,
+      margin: 12,
+      borderWidth: 1,
+    },
+  });
+  
