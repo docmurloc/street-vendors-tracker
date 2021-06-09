@@ -18,6 +18,8 @@ import {
 
 } from 'react-native/Libraries/NewAppScreen';
 
+import MainNavigation from './navigation/Main';
+
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -28,7 +30,7 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-     
+      <MainNavigation/>
     </SafeAreaView>
   );
 };
