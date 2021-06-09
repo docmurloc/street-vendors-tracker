@@ -21,7 +21,7 @@ function useStandData() {
     const [description, setDescrition] = useState('');
     const [link, setlink] = useState('');
     const [phone, setPhone] = useState('');
-    const [positionStand, setPositonStand] = useState('');
+    const [positionStand, setPositonStand] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const { user } = useAuth();

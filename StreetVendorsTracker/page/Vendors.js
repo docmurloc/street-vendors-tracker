@@ -4,7 +4,7 @@ import { View, Text, Button, Switch, TextInput, StyleSheet } from 'react-native'
 
 import { useStand } from '../contexts/Stand';
 
-export default function Vendors() {
+export default function Vendors({ navigation }) {
 
 
     const {isEnabled,
@@ -58,6 +58,11 @@ export default function Vendors() {
                 title="save"
                 color="#841584"
                 accessibilityLabel="Save stand information"
+            />
+            <Button
+            title="position stand"
+            color="#841584"
+            onPress={() => navigation.navigate('Position vendors')}
             />
         </View>
     )
