@@ -26,6 +26,31 @@ function useStandData() {
 
     const { user } = useAuth();
 
+    useEffect(() => {
+        if (user) {
+            const subscriber = firestore()
+                .collection('Stands')
+                .doc(user.providerData[0].uid)
+                .onSnapshot(documentSnapshot => {
+
+                    const dataStand = documentSnapshot.data();
+
+                    console.log('stand data: ', dataStand);
+
+                    if (dataStand) {
+                        setName(dataStand?.name);
+                        setDescrition(dataStand?.description);
+                        setlink(dataStand?.link);
+                        setPhone(dataStand?.setPhone);
+                        setPositonStand(dataStand?.positionStand);
+                    }
+                });
+
+            // Stop listening for updates when no longer required
+            return () => subscriber();
+        }
+    }, [user])
+
     const saveStandInformation = () => {
         console.log("save stand information");
         setLoading(true);
@@ -36,6 +61,7 @@ function useStandData() {
             .collection('Stands')
             .doc(user.providerData[0].uid)
             .set({
+                show : isEnabled,
                 uid: user.providerData[0].uid,
                 name: name,
                 description: description,

@@ -38,16 +38,20 @@ export default function PositionVendors() {
 
     const ref = useRef(null);
 
+    const positionMarker = {
+        latitude: position ? position.coords.latitude : positionStand.latitude,
+        longitude: position ? position.coords.longitude : positionStand.longitude
+    }
 
     return (
         <View>
-            {position ?
+            {position || positionStand ?
                 <>
                     <MapView
                         style={{ height: 500, width: 350 }}
                         initialRegion={{
-                            latitude: position.coords.latitude,
-                            longitude: position.coords.longitude,
+                            latitude: positionStand ? positionStand.latitude : position.coords.latitude,
+                            longitude: positionStand ? positionStand.longitude : position.coords.longitude,
                             latitudeDelta: 0.05,
                             longitudeDelta: 0.05
                         }}
@@ -62,7 +66,7 @@ export default function PositionVendors() {
                     >
                         <Marker
                             ref={ref}
-                            coordinate={{ latitude: position.coords.latitude, longitude: position.coords.longitude }}
+                            coordinate={positionMarker}
                             title={'test'}
                             description={'desciption'}
                         />
