@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 import { useStand } from '../contexts/Stand';
 import { usePosition } from '../contexts/Position';
 
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 
 export default function PositionVendors() {
 
-    const { positionStand, setPositonStand, saveStandInformation } = useStand();
+    const { positionStand, setPositonStand } = useStand();
 
     const { position, hasLocationPermission, askLocationPermission, trackUser, unTrackUser } = usePosition();
 
@@ -23,30 +23,64 @@ export default function PositionVendors() {
             trackUser();
         }
         return unTrackUser();
-    },[hasLocationPermission]);
+    }, [hasLocationPermission]);
 
 
     useEffect(() => {
-        console.log( "position stand = ", positionStand);
+        console.log("position stand = ", positionStand);
     }, [positionStand]);
 
     useEffect(() => {
-        console.log( "position user = ", position);
+        console.log("position user = ", position);
     }, [position]);
+
+    const [positionSelected, setPositionSelected] = useState(null);
+
+    const ref = useRef(null);
 
 
     return (
         <View>
-            <Text>PositionVendors page</Text>
-            <MapView
-                style={{ height: 500, width: 350 }}
-                initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.05,
-                    longitudeDelta: 0.05
-                }}
-            />
+            {position ?
+                <>
+                    <MapView
+                        style={{ height: 500, width: 350 }}
+                        initialRegion={{
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            latitudeDelta: 0.05,
+                            longitudeDelta: 0.05
+                        }}
+                        onRegionChangeComplete={(region) => {
+                            console.log('region =', region);
+                            ref.current?.animateMarkerToCoordinate({
+                                ...region,
+                                duration: 0
+                            });
+                            setPositionSelected(region);
+                        }}
+                    >
+                        <Marker
+                            ref={ref}
+                            coordinate={{ latitude: position.coords.latitude, longitude: position.coords.longitude }}
+                            title={'test'}
+                            description={'desciption'}
+                        />
+                    </MapView>
+                    <Button
+                        title="validate position"
+                        color="#841584"
+                        onPress={() => {
+                            setPositonStand(positionSelected);
+                        }}
+                    />
+                </>
+                :
+                <>
+                    <Text>loading...</Text>
+                </>
+            }
+
         </View>
     )
 }

@@ -41,6 +41,7 @@ function useStandData() {
                 description: description,
                 link: link,
                 phone: phone,
+                positionStand: positionStand,
             })
             .then(() => {
                 console.log('User added!');
