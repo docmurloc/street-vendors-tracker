@@ -23,6 +23,7 @@ function useStandData() {
     const [phone, setPhone] = useState('');
     const [positionStand, setPositonStand] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [photo, setPhoto] = useState(require('../ressources/images/imagePlaceholder.png'))
 
     const { user } = useAuth();
 
@@ -81,6 +82,8 @@ function useStandData() {
 
 
     return {
+        photo,
+        setPhoto,
         isEnabled,
         toggleSwitch,
         name,

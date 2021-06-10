@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
-import { View, Text, Button, Switch, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Button, Switch, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
+
+import { launchImageLibrary } from 'react-native-image-picker';
 
 import { useStand } from '../contexts/Stand';
 
 export default function Vendors({ navigation }) {
 
 
-    const {isEnabled,
+    const { isEnabled,
         toggleSwitch,
         name,
         setName,
@@ -17,7 +19,28 @@ export default function Vendors({ navigation }) {
         setlink,
         phone,
         setPhone,
-        saveStandInformation} = useStand();
+        photo,
+        setPhoto,
+        saveStandInformation } = useStand();
+
+    const optionPhoto = {
+        mediaType : 'photo',
+        maxWidth : 350,
+        maxHeight : 200,
+        selectionLimit : 1,
+        noData: true
+    }
+
+    const handleChooseImage = () => {
+        launchImageLibrary(optionPhoto, (response) => {
+            if (response) {
+                console.log("info image choosen", response, response.assets[0].uri);
+                setPhoto({
+                    uri : response.assets[0].uri
+                });
+            }
+        });
+    };
 
     return (
         <View>
@@ -29,6 +52,18 @@ export default function Vendors({ navigation }) {
                 onValueChange={toggleSwitch}
                 value={isEnabled}
             />
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                    console.log("press");
+                    handleChooseImage();
+                }}
+            >
+                <Image
+                    style={styles.imageStand}
+                    source={photo}
+                />
+            </TouchableOpacity>
             <TextInput
                 style={styles.input}
                 onChangeText={setName}
@@ -60,19 +95,27 @@ export default function Vendors({ navigation }) {
                 accessibilityLabel="Save stand information"
             />
             <Button
-            title="position stand"
-            color="#841584"
-            onPress={() => navigation.navigate('Position vendors')}
+                title="position stand"
+                color="#841584"
+                onPress={() => navigation.navigate('Position vendors')}
             />
-        </View>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
     },
-  });
-  
+    imageStand: {
+        width: 350,
+        height: 200
+    },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 10
+    },
+});
