@@ -6,22 +6,19 @@ import { launchImageLibrary } from 'react-native-image-picker';
 
 import { useStand } from '../contexts/Stand';
 
+const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
+
+
 export default function Vendors({ navigation }) {
 
 
-    const { isEnabled,
-        toggleSwitch,
-        name,
-        setName,
-        description,
-        setDescrition,
-        link,
-        setlink,
-        phone,
-        setPhone,
-        photo,
-        saveStandInformation,
-        uploadPhotoStand
+    const { 
+        standData,
+        updateStandName,
+        updateStandDescription,
+        updateStandLink,
+        updateStandPhone,
+        updateStandPhoto
      } = useStand();
 
     const optionPhoto = {
@@ -32,13 +29,11 @@ export default function Vendors({ navigation }) {
         noData: true
     }
 
-    const [photoSelected, setPhotoSelected] = useState(photo)
-
     const handleChooseImage = () => {
         launchImageLibrary(optionPhoto, (response) => {
             if (response) {
                 console.log("info image choosen", response, response.assets[0].uri);
-                setPhotoSelected({
+                updateStandPhoto({
                     ...response.assets[0]
                 });
             }
@@ -47,14 +42,6 @@ export default function Vendors({ navigation }) {
 
     return (
         <View>
-            <Text>Vendors page</Text>
-            <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
-            />
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => {
@@ -64,48 +51,32 @@ export default function Vendors({ navigation }) {
             >
                 <Image
                     style={styles.imageStand}
-                    source={photoSelected}
+                    source={standData.photo ? standData.photo : defaultImage}
                 />
             </TouchableOpacity>
-            <Button
-                onPress={() => {
-                    uploadPhotoStand(photoSelected);
-                }}
-                title="upload image"
-                color="#841584"
-                accessibilityLabel="Save stand information"
-            />
             <TextInput
                 style={styles.input}
-                onChangeText={setName}
-                value={name}
+                onChangeText={updateStandName}
+                value={standData?.name}
                 placeholder="name..."
             />
             <TextInput
                 style={styles.input}
-                onChangeText={setDescrition}
-                value={description}
+                onChangeText={updateStandDescription}
+                value={standData?.description}
                 placeholder="desciption..."
             />
             <TextInput
                 style={styles.input}
-                onChangeText={setlink}
-                value={link}
+                onChangeText={updateStandLink}
+                value={standData?.link}
                 placeholder="link..."
             />
             <TextInput
                 style={styles.input}
-                onChangeText={setPhone}
-                value={phone}
+                onChangeText={updateStandPhone}
+                value={standData?.phone}
                 placeholder="phone..."
-            />
-            <Button
-                onPress={() => {
-                    saveStandInformation();
-                }}
-                title="save"
-                color="#841584"
-                accessibilityLabel="Save stand information"
             />
             <Button
                 title="position stand"

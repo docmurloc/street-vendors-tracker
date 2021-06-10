@@ -16,15 +16,19 @@ export const useStand = () => {
     return useContext(authContext);
 };
 
+const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
+
 function useStandData() {
-    const [isEnabled, setIsEnabled] = useState(false);
-    const [name, setName] = useState('');
-    const [description, setDescrition] = useState('');
-    const [link, setlink] = useState('');
-    const [phone, setPhone] = useState('');
-    const [positionStand, setPositonStand] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [photo, setPhoto] = useState({uri : 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b'})
+    //const [isEnabled, setIsEnabled] = useState(false);
+    //const [name, setName] = useState('');
+    //const [description, setDescrition] = useState('');
+    //const [link, setlink] = useState('');
+    //const [phone, setPhone] = useState('');
+    //const [positionStand, setPositonStand] = useState(null);
+    //const [loading, setLoading] = useState(false);
+    //const [photo, setPhoto] = useState({uri : 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b'})
+
+    const [standData, setStandData] = useState(null)
 
     const { user } = useAuth();
 
@@ -39,13 +43,7 @@ function useStandData() {
 
                     console.log('stand data: ', dataStand);
 
-                    if (dataStand) {
-                        setName(dataStand?.name);
-                        setDescrition(dataStand?.description);
-                        setlink(dataStand?.link);
-                        setPhone(dataStand?.setPhone);
-                        setPositonStand(dataStand?.positionStand);
-                    }
+                    setStandData(dataStand)
                 });
 
             // Stop listening for updates when no longer required
@@ -53,7 +51,78 @@ function useStandData() {
         }
     }, [user])
 
-    const uploadPhotoStand = async (photoData) => {
+
+    const updateStandName = (name) => {
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .update({
+                uid: user.providerData[0].uid,
+                name
+            })
+            .then(() => {
+                console.log('Stand name updated!');
+
+            });
+    }
+
+    const updateStandLink = (link) => {
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .update({
+                uid: user.providerData[0].uid,
+                link
+            })
+            .then(() => {
+                console.log('Stand link updated!');
+
+            });
+    }
+
+    const updateStandDescription = (description) => {
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .update({
+                uid: user.providerData[0].uid,
+                description
+            })
+            .then(() => {
+                console.log('Stand description updated!');
+
+            });
+    }
+
+    const updateStandPhone = (phone) => {
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .update({
+                uid: user.providerData[0].uid,
+                phone
+            })
+            .then(() => {
+                console.log('Stand phone updated!');
+
+            });
+    }
+
+    const updateStandCoords = (coords) => {
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .update({
+                uid: user.providerData[0].uid,
+                coords
+            })
+            .then(() => {
+                console.log('Stand coords updated!');
+
+            });
+    }
+
+    const updateStandPhoto = async (photoData) => {
 
         console.log("photo data = ", photoData);
 
@@ -66,57 +135,26 @@ function useStandData() {
 
         console.log("image uploaded url = ", url);
 
-        setPhoto({
-            uri : url
-        })
-    }
-
-    const saveStandInformation = () => {
-        console.log("save stand information");
-        setLoading(true);
-
-        console.log("user stand ", user.providerData[0].uid);
-
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .set({
-                show : isEnabled,
-                uid: user.providerData[0].uid,
-                name: name,
-                description: description,
-                link: link,
-                phone: phone,
-                positionStand: positionStand,
+            .update({
+                photo: {
+                    uri: url
+                },
             })
             .then(() => {
-                console.log('User added!');
-                setLoading(false);
-
+                console.log('Image user stand upload');
             });
     }
 
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-
-
     return {
-        photo,
-        setPhoto,
-        isEnabled,
-        toggleSwitch,
-        name,
-        setName,
-        description,
-        setDescrition,
-        link,
-        setlink,
-        phone,
-        setPhone,
-        positionStand,
-        setPositonStand,
-        saveStandInformation,
-        loading,
-        uploadPhotoStand
+        standData,
+        updateStandName,
+        updateStandDescription,
+        updateStandLink,
+        updateStandPhone,
+        updateStandCoords,
+        updateStandPhoto
     };
 }

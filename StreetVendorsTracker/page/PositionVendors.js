@@ -10,7 +10,7 @@ import MapView, { Marker } from "react-native-maps";
 
 export default function PositionVendors() {
 
-    const { positionStand, setPositonStand } = useStand();
+    const { standData, updateStandCoords } = useStand();
 
     const { position, hasLocationPermission, askLocationPermission, trackUser, unTrackUser } = usePosition();
 
@@ -27,8 +27,8 @@ export default function PositionVendors() {
 
 
     useEffect(() => {
-        console.log("position stand = ", positionStand);
-    }, [positionStand]);
+        console.log("position stand = ", standData?.coords);
+    }, [standData]);
 
     useEffect(() => {
         console.log("position user = ", position);
@@ -39,19 +39,18 @@ export default function PositionVendors() {
     const ref = useRef(null);
 
     const positionMarker = {
-        latitude: position ? position.coords.latitude : positionStand.latitude,
-        longitude: position ? position.coords.longitude : positionStand.longitude
+        ...position?.coords,
+        ...standData?.coords
     }
 
     return (
         <View>
-            {position || positionStand ?
+            {position || standData.coords ?
                 <>
                     <MapView
                         style={{ height: 500, width: 350 }}
                         initialRegion={{
-                            latitude: positionStand ? positionStand.latitude : position.coords.latitude,
-                            longitude: positionStand ? positionStand.longitude : position.coords.longitude,
+                            ...positionMarker,
                             latitudeDelta: 0.05,
                             longitudeDelta: 0.05
                         }}
@@ -75,7 +74,7 @@ export default function PositionVendors() {
                         title="validate position"
                         color="#841584"
                         onPress={() => {
-                            setPositonStand(positionSelected);
+                            updateStandCoords(positionSelected);
                         }}
                     />
                 </>
