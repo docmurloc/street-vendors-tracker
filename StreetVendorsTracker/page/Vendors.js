@@ -20,8 +20,9 @@ export default function Vendors({ navigation }) {
         phone,
         setPhone,
         photo,
-        setPhoto,
-        saveStandInformation } = useStand();
+        saveStandInformation,
+        uploadPhotoStand
+     } = useStand();
 
     const optionPhoto = {
         mediaType : 'photo',
@@ -31,12 +32,14 @@ export default function Vendors({ navigation }) {
         noData: true
     }
 
+    const [photoSelected, setPhotoSelected] = useState(photo)
+
     const handleChooseImage = () => {
         launchImageLibrary(optionPhoto, (response) => {
             if (response) {
                 console.log("info image choosen", response, response.assets[0].uri);
-                setPhoto({
-                    uri : response.assets[0].uri
+                setPhotoSelected({
+                    ...response.assets[0]
                 });
             }
         });
@@ -61,9 +64,17 @@ export default function Vendors({ navigation }) {
             >
                 <Image
                     style={styles.imageStand}
-                    source={photo}
+                    source={photoSelected}
                 />
             </TouchableOpacity>
+            <Button
+                onPress={() => {
+                    uploadPhotoStand(photoSelected);
+                }}
+                title="upload image"
+                color="#841584"
+                accessibilityLabel="Save stand information"
+            />
             <TextInput
                 style={styles.input}
                 onChangeText={setName}
@@ -89,7 +100,9 @@ export default function Vendors({ navigation }) {
                 placeholder="phone..."
             />
             <Button
-                onPress={() => saveStandInformation()}
+                onPress={() => {
+                    saveStandInformation();
+                }}
                 title="save"
                 color="#841584"
                 accessibilityLabel="Save stand information"

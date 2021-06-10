@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 import { useAuth } from '../contexts/Auth';
 
@@ -23,7 +24,7 @@ function useStandData() {
     const [phone, setPhone] = useState('');
     const [positionStand, setPositonStand] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [photo, setPhoto] = useState(require('../ressources/images/imagePlaceholder.png'))
+    const [photo, setPhoto] = useState({uri : 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b'})
 
     const { user } = useAuth();
 
@@ -51,6 +52,24 @@ function useStandData() {
             return () => subscriber();
         }
     }, [user])
+
+    const uploadPhotoStand = async (photoData) => {
+
+        console.log("photo data = ", photoData);
+
+        const reference = storage().ref(`Stands/${user.providerData[0].uid}/StandImage.jpg`);
+
+        await reference.putFile(photoData.uri);
+
+
+        const url = await reference.getDownloadURL();
+
+        console.log("image uploaded url = ", url);
+
+        setPhoto({
+            uri : url
+        })
+    }
 
     const saveStandInformation = () => {
         console.log("save stand information");
@@ -97,6 +116,7 @@ function useStandData() {
         positionStand,
         setPositonStand,
         saveStandInformation,
-        loading
+        loading,
+        uploadPhotoStand
     };
 }
