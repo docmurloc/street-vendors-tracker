@@ -16,17 +16,7 @@ export const useStand = () => {
     return useContext(authContext);
 };
 
-const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
-
 function useStandData() {
-    //const [isEnabled, setIsEnabled] = useState(false);
-    //const [name, setName] = useState('');
-    //const [description, setDescrition] = useState('');
-    //const [link, setlink] = useState('');
-    //const [phone, setPhone] = useState('');
-    //const [positionStand, setPositonStand] = useState(null);
-    //const [loading, setLoading] = useState(false);
-    //const [photo, setPhoto] = useState({uri : 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b'})
 
     const [standData, setStandData] = useState(null)
 
