@@ -83,6 +83,11 @@ export default function Vendors({ navigation }) {
                 color="#841584"
                 onPress={() => navigation.navigate('Position vendors')}
             />
+            <Button
+                title="Menu"
+                color="#841584"
+                onPress={() => navigation.navigate('Items vendor')}
+            />
         </View >
     )
 }
