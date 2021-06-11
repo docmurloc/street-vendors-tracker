@@ -4,29 +4,42 @@ import { View, Text } from 'react-native';
 
 import TimeSlider from '../components/TimeSliders';
 
+import { useStand } from '../contexts/Stand';
+
+
 export default function VendorTimeTable() {
+
+    const { updateStandTimeTable } = useStand();
+
     return (
         <View>
             <TimeSlider
-                title={'Lundi'}
+                day={'Lundi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Mardi'}
+                day={'Mardi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Mercredi'}
+                day={'Mercredi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Jeudi'}
+                day={'Jeudi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Vendredi'}
+                day={'Vendredi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Samedi'}
+                day={'Samedi'}
+                handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                title={'Dimanche'}
+                day={'Dimanche'}
+                handleValue={updateStandTimeTable}
             />
         </View>
     )

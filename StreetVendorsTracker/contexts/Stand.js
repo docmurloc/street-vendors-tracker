@@ -141,6 +141,28 @@ function useStandData() {
             });
     }
 
+    const updateStandTimeTable = (day, value) => {
+
+
+        const data = {
+            uid: user.providerData[0].uid,
+        }
+
+        data[day] = {
+            from : value[0],
+            to : value[1],
+        }
+
+        firestore()
+            .collection('TimeTable')
+            .doc(user.providerData[0].uid)
+            .set(data, {merge: true})
+            .then(() => {
+                console.log('Stand timetable updated!');
+
+            });
+    }
+
     const updateStandPhoto = async (photoData) => {
 
         console.log("photo data = ", photoData);
@@ -204,6 +226,7 @@ function useStandData() {
         updateStandPhone,
         updateStandCoords,
         updateStandPhoto,
-        createItem
+        createItem,
+        updateStandTimeTable
     };
 }

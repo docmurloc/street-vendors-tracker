@@ -4,19 +4,22 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
-export default function TimeSlider({title, value, setValue}) {
+export default function TimeSlider({ day, handleValue }) {
 
     const [selected, setSelected] = useState([0, 24]);
 
     useEffect(() => {
-        console.log(`${title} from ${selected[0]} to ${selected[1]}`)
+        console.log(`${day} from ${selected[0]} to ${selected[1]}`)
+        if (handleValue) {
+            handleValue(day, selected);
+        }
     }, selected)
 
     return (
         <View
             style={styles.container}
         >
-            <Text>{title} from {selected[0]} to {selected[1]}</Text>
+            <Text>{day} from {selected[0]} to {selected[1]}</Text>
             <MultiSlider
 
                 min={0}
