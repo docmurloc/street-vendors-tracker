@@ -53,7 +53,10 @@ function useStandData() {
                     let itemsBuffer = []
 
                     querySnapshot.forEach(function (doc) {
-                        itemsBuffer.push(doc.data());
+                        itemsBuffer.push({
+                            ...doc.data(),
+                            id : doc.id
+                        });
                     });
 
                     console.log('stand items array : ', itemsBuffer);
