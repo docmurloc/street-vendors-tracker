@@ -19,6 +19,7 @@ export const useStand = () => {
 function useStandData() {
 
     const [standData, setStandData] = useState(null)
+    const [items, setItems] = useState([])
 
     const { user } = useAuth();
 
@@ -39,7 +40,32 @@ function useStandData() {
             // Stop listening for updates when no longer required
             return () => subscriber();
         }
-    }, [user])
+    }, [user]);
+
+
+    useEffect(() => {
+        if (user) {
+            const subscriber = firestore()
+                .collection('Items')
+                .where('uid', '==', user.providerData[0].uid)
+                .onSnapshot(querySnapshot => {
+
+                    let itemsBuffer = []
+
+                    querySnapshot.forEach(function (doc) {
+                        itemsBuffer.push(doc.data());
+                    });
+
+                    console.log('stand items array : ', itemsBuffer);
+                    setItems(itemsBuffer);
+                });
+
+            // Stop listening for updates when no longer required
+            return () => subscriber();
+        }
+    }, [user]);
+
+
 
 
     const updateStandName = (name) => {
@@ -168,6 +194,7 @@ function useStandData() {
 
     return {
         standData,
+        items,
         updateStandName,
         updateStandDescription,
         updateStandLink,
