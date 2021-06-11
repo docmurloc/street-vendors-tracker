@@ -84,6 +84,11 @@ export default function Vendors({ navigation }) {
                 onPress={() => navigation.navigate('Position vendors')}
             />
             <Button
+                title="Timetable"
+                color="#841584"
+                onPress={() => navigation.navigate('Timetable')}
+            />
+            <Button
                 title="Menu"
                 color="#841584"
                 onPress={() => navigation.navigate('Items vendor')}
