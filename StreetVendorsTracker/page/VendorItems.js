@@ -7,7 +7,7 @@ export default function VendorItems({ navigation }) {
         <View>
             <Text>Vendor Items page</Text>
             <Button
-                title="Menu"
+                title="Add item"
                 color="#841584"
                 onPress={() => navigation.navigate('Create item')}
             />

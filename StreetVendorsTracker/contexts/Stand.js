@@ -138,6 +138,34 @@ function useStandData() {
             });
     }
 
+    const createItem = async (name, desciption, price, photoData) => {
+        console.log("photo data = ", photoData);
+
+        const reference = storage().ref(`Items/${user.providerData[0].uid}/${photoData.fileName}`);
+
+        await reference.putFile(photoData.uri);
+
+
+        const url = await reference.getDownloadURL();
+
+        console.log("image uploaded url = ", url);
+
+        firestore()
+            .collection('Items')
+            .add({
+                name,
+                desciption,
+                price,
+                photo: {
+                    uri: url
+                },
+                uid: user.providerData[0].uid
+            })
+            .then(() => {
+                console.log('Image user stand upload');
+            });
+    }
+
     return {
         standData,
         updateStandName,
@@ -145,6 +173,7 @@ function useStandData() {
         updateStandLink,
         updateStandPhone,
         updateStandCoords,
-        updateStandPhoto
+        updateStandPhoto,
+        createItem
     };
 }
