@@ -5,12 +5,6 @@ import storage from '@react-native-firebase/storage';
 
 import Geocoder from 'react-native-geocoding';
 
-import { GOOGLE_API_KEY } from '@env'
-
-console.log("env key ", GOOGLE_API_KEY);
-
-Geocoder.init(GOOGLE_API_KEY);
-
 import { useAuth } from '../contexts/Auth';
 
 const authContext = createContext();
