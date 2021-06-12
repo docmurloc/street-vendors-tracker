@@ -3,6 +3,14 @@ import React, { useState, useEffect, useContext, createContext } from 'react';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 
+import Geocoder from 'react-native-geocoding';
+
+import { GOOGLE_API_KEY } from '@env'
+
+console.log("env key ", GOOGLE_API_KEY);
+
+Geocoder.init(GOOGLE_API_KEY);
+
 import { useAuth } from '../contexts/Auth';
 
 const authContext = createContext();
@@ -55,7 +63,7 @@ function useStandData() {
                     querySnapshot.forEach(function (doc) {
                         itemsBuffer.push({
                             ...doc.data(),
-                            id : doc.id
+                            id: doc.id
                         });
                     });
 
@@ -127,12 +135,18 @@ function useStandData() {
             });
     }
 
-    const updateStandCoords = (coords) => {
+    const updateStandCoords = async (coords) => {
+
+        const json = await Geocoder.from(coords);
+        var addressComponent = json.results[0].formatted_address;
+        console.log('adress stand : ', addressComponent);
+
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
             .update({
                 uid: user.providerData[0].uid,
+                address : addressComponent,
                 coords
             })
             .then(() => {
@@ -149,14 +163,14 @@ function useStandData() {
         }
 
         data[day] = {
-            from : value[0],
-            to : value[1],
+            from: value[0],
+            to: value[1],
         }
 
         firestore()
             .collection('TimeTable')
             .doc(user.providerData[0].uid)
-            .set(data, {merge: true})
+            .set(data, { merge: true })
             .then(() => {
                 console.log('Stand timetable updated!');
 
