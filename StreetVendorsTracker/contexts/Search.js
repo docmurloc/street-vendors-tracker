@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 
+import Geocoder from 'react-native-geocoding';
 
 const authContext = createContext();
 
@@ -20,6 +21,8 @@ function useSearchInfo() {
 
 
     const updateSearchPosition = async (coords, radiusSetting , user) => {
+
+        console.log("update search position ", coords, radiusSetting, user);
 
         const json = await Geocoder.from(coords);
         var addressComponent = json.results[0].formatted_address;

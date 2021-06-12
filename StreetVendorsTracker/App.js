@@ -6,13 +6,13 @@
  * @flow strict-local
  */
 
- import Geocoder from 'react-native-geocoding';
+import Geocoder from 'react-native-geocoding';
 
- import { GOOGLE_API_KEY } from '@env'
- 
- console.log("env key ", GOOGLE_API_KEY);
- 
- Geocoder.init(GOOGLE_API_KEY);
+import { GOOGLE_API_KEY } from '@env'
+
+console.log("env key ", GOOGLE_API_KEY);
+
+Geocoder.init(GOOGLE_API_KEY);
 
 import React from 'react';
 import {
@@ -23,7 +23,9 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './contexts/Auth';
 import { PositionProvider } from './contexts/Position';
-import { StandProvider } from './contexts/Stand'
+import { StandProvider } from './contexts/Stand';
+import { SearchProvider } from './contexts/Search';
+
 
 
 import MainNavigation from './navigation/Main';
@@ -35,10 +37,12 @@ const App = () => {
     <PositionProvider>
       <AuthProvider>
         <StandProvider>
-          <NavigationContainer>
-            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-            <MainNavigation />
-          </NavigationContainer>
+          <SearchProvider>
+            <NavigationContainer>
+              <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+              <MainNavigation />
+            </NavigationContainer>
+          </SearchProvider>
         </StandProvider>
       </AuthProvider>
     </PositionProvider>
