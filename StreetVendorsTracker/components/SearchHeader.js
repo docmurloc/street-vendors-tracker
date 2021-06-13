@@ -12,21 +12,20 @@ export default function SearchHeader() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { position, hasLocationPermission, askLocationPermission, trackUser, unTrackUser } = usePosition();
+    const { position, hasLocationPermission, askLocationPermission, trackUser } = usePosition();
 
     const { searchPosition, updateSearchPosition } = useSearch();
 
-    const [ selectedPosition, setSelectedPosition] = useState(searchPosition);
+    const [selectedPosition, setSelectedPosition] = useState(searchPosition);
 
     useEffect(() => {
         askLocationPermission();
-    }, []);
+    });
 
     useEffect(() => {
         if (hasLocationPermission) {
             trackUser();
         }
-        return unTrackUser();
     }, [hasLocationPermission]);
 
     const ref = useRef(null);
@@ -54,7 +53,6 @@ export default function SearchHeader() {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
                         {position || searchPosition ?
                             <>
                                 <MapView
@@ -89,7 +87,15 @@ export default function SearchHeader() {
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => {
-                                updateSearchPosition(position?.coords, 5, true);
+                                setModalVisible(!modalVisible);
+                            }}
+                        >
+                            <Text style={styles.textStyle}>close</Text>
+                        </Pressable>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => {
+                                updateSearchPosition(position?.coords, 5000, true);
                                 setModalVisible(!modalVisible);
                             }}
                         >
@@ -98,7 +104,7 @@ export default function SearchHeader() {
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => {
-                                updateSearchPosition(selectedPosition, 5, false);
+                                updateSearchPosition(selectedPosition, 5000, false);
                                 setModalVisible(!modalVisible);
                             }}
                         >

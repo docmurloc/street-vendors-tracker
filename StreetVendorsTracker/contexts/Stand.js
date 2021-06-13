@@ -20,8 +20,8 @@ export const useStand = () => {
 
 function useStandData() {
 
-    const [standData, setStandData] = useState(null)
-    const [items, setItems] = useState([])
+    const [standData, setStandData] = useState(null);
+    const [items, setItems] = useState([]);
 
     const { user } = useAuth();
 
@@ -69,9 +69,6 @@ function useStandData() {
             return () => subscriber();
         }
     }, [user]);
-
-
-
 
     const updateStandName = (name) => {
         firestore()
@@ -140,7 +137,7 @@ function useStandData() {
             .doc(user.providerData[0].uid)
             .update({
                 uid: user.providerData[0].uid,
-                address : addressComponent,
+                address: addressComponent,
                 coords
             })
             .then(() => {
