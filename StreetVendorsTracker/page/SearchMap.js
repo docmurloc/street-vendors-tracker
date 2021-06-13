@@ -4,10 +4,10 @@ import { View, Text } from 'react-native';
 
 import SearchHeader from '../components/SearchHeader';
 
-export default function Search() {
+export default function SearchMap() {
     return (
         <View>
-            <Text>Search page</Text>
+            <Text>Search map page</Text>
             <SearchHeader/>
         </View>
     )
