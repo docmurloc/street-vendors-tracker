@@ -21,7 +21,7 @@ function useSearchInfo() {
     const [addressPosition, setAddressPosition] = useState(null);
     const [useUserPosition, setUseUserPosition] = useState(false);
     const [radius, setRadius] = useState(false);
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchResult, setSearchResult] = useState(null);
 
     useEffect(() => {
         if (searchPosition && radius) {

@@ -11,9 +11,10 @@ export default function SearchListe() {
 
     const { searchResult } = useSearch();
 
+    console.log(searchResult);
+
     return (
         <View>
-            <Text>Search liste page</Text>
             <SearchHeader />
 
             {searchResult ?

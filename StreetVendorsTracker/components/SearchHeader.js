@@ -31,7 +31,6 @@ export default function SearchHeader() {
 
     return (
         <View>
-            <Text>Search header component</Text>
             <Button
                 title="Change position"
                 onPress={() => setModalVisible(!modalVisible)}

@@ -10,28 +10,24 @@ import SearchHeader from '../components/SearchHeader';
 
 export default function SearchMap() {
 
-    const { searchPosition, searchResult } = useSearch();
-
-
+    const { searchPosition, searchResult, updateSearchPosition } = useSearch();
 
     return (
         <View>
-            <Text>Search map page</Text>
             <SearchHeader />
             {searchPosition ?
                 <MapView
                     style={{ height: 500, width: 350 }}
-                    region={{
+                    initialRegion={{
                         ...searchPosition,
                         latitudeDelta: 0.05,
                         longitudeDelta: 0.05
                     }}
+                    onRegionChangeComplete={(region) => {
+                        console.log('region =', region);
+                        updateSearchPosition(region, 5000, false);
+                    }}
                 >
-                    <Marker
-                        coordinate={searchPosition}
-                        title={'test'}
-                        description={'desciption'}
-                    />
                     {searchResult.map((stand) => {
                         return (
                             <Marker
