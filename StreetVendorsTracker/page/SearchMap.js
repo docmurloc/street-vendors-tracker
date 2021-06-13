@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import MapView, { Marker } from "react-native-maps";
 
 import { useSearch } from '../contexts/Search';
-import { useStand } from '../contexts/Position';
 
 import { View, Text } from 'react-native';
 
@@ -22,7 +21,7 @@ export default function SearchMap() {
             {searchPosition ?
                 <MapView
                     style={{ height: 500, width: 350 }}
-                    initialRegion={{
+                    region={{
                         ...searchPosition,
                         latitudeDelta: 0.05,
                         longitudeDelta: 0.05
