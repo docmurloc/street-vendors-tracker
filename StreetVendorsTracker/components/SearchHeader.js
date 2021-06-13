@@ -12,7 +12,7 @@ export default function SearchHeader() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { position, hasLocationPermission, askLocationPermission, trackUser } = usePosition();
+    const { position, askLocationPermission } = usePosition();
 
     const { searchPosition, updateSearchPosition } = useSearch();
 
@@ -20,13 +20,7 @@ export default function SearchHeader() {
 
     useEffect(() => {
         askLocationPermission();
-    });
-
-    useEffect(() => {
-        if (hasLocationPermission) {
-            trackUser();
-        }
-    }, [hasLocationPermission]);
+    }, []);
 
     const ref = useRef(null);
 

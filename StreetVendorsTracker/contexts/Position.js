@@ -42,6 +42,7 @@ function usePositionData() {
             if (granted === PermissionsAndroid.RESULTS.GRANTED) {
               console.log("You can use the position");
               setHasLocationPermission(true);
+              getCurrentPosition();
               return true;
             } else {
               console.log("Position permission denied");

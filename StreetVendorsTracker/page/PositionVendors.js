@@ -12,27 +12,11 @@ export default function PositionVendors() {
 
     const { standData, updateStandCoords } = useStand();
 
-    const { position, hasLocationPermission, askLocationPermission, trackUser, unTrackUser } = usePosition();
+    const { position, askLocationPermission } = usePosition();
 
     useEffect(() => {
         askLocationPermission();
     }, []);
-
-    useEffect(() => {
-        if (hasLocationPermission) {
-            trackUser();
-        }
-        return unTrackUser();
-    }, [hasLocationPermission]);
-
-
-    useEffect(() => {
-        console.log("position stand = ", standData?.coords);
-    }, [standData]);
-
-    useEffect(() => {
-        console.log("position user = ", position);
-    }, [position]);
 
     const [positionSelected, setPositionSelected] = useState(null);
 
