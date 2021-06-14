@@ -10,6 +10,7 @@ import VendorItemsPage from '../page/VendorItems';
 import CreateItemsPage from '../page/CreateItem';
 import VendorTimeTablePage from '../page/VendorTimeTable';
 import VendorInformation from '../page/VendorsInformation';
+import Menu from '../page/Menu';
 import LoginPage from '../page/Login';
 
 import { useAuth } from '../contexts/Auth';
@@ -36,6 +37,7 @@ export default function Main() {
                         <Stack.Screen name="Create item" component={CreateItemsPage} />
                         <Stack.Screen name="Timetable" component={VendorTimeTablePage} />
                         <Stack.Screen name="Information" component={VendorInformation} />
+                        <Stack.Screen name="Menu" component={Menu} />
                     </>
                 ): (
                     <>
