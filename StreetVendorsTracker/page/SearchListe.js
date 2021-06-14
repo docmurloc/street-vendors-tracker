@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { useSearch } from '../contexts/Search';
 
 import SearchHeader from '../components/SearchHeader';
 
-export default function SearchListe() {
+export default function SearchListe({ navigation }) {
 
 
     const { searchResult } = useSearch();
@@ -24,7 +24,15 @@ export default function SearchListe() {
                         data={searchResult}
                         renderItem={({ item }) => {
                             return (
-                                <Text>{item.name}</Text>
+                                <TouchableOpacity
+                                    style={styles.button}
+                                    onPress={() => {
+                                        console.log("press");
+                                        navigation.navigate('Information', item);
+                                    }}
+                                >
+                                    <Text>{item.name}</Text>
+                                </TouchableOpacity>
                             )
                         }}
                         keyExtractor={item => item.id}
@@ -36,3 +44,20 @@ export default function SearchListe() {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+    },
+    imageStand: {
+        width: 350,
+        height: 200
+    },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 10
+    },
+});

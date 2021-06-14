@@ -28,7 +28,7 @@ export default function SearchMap() {
                         updateSearchPosition(region, 5000, false);
                     }}
                 >
-                    {searchResult.map((stand) => {
+                    {searchResult?.map((stand) => {
                         return (
                             <Marker
                                 key={stand.id}
