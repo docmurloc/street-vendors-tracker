@@ -8,7 +8,9 @@
 
 import Geocoder from 'react-native-geocoding';
 
-import { GOOGLE_API_KEY } from '@env'
+import { GOOGLE_API_KEY } from '@env';
+
+import { Provider as PaperProvider } from 'react-native-paper';
 
 console.log("env key ", GOOGLE_API_KEY);
 
@@ -34,18 +36,20 @@ const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <PositionProvider>
-      <AuthProvider>
-        <StandProvider>
-          <SearchProvider>
-            <NavigationContainer>
-              <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-              <MainNavigation />
-            </NavigationContainer>
-          </SearchProvider>
-        </StandProvider>
-      </AuthProvider>
-    </PositionProvider>
+    <PaperProvider>
+      <PositionProvider>
+        <AuthProvider>
+          <StandProvider>
+            <SearchProvider>
+              <NavigationContainer>
+                <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+                <MainNavigation />
+              </NavigationContainer>
+            </SearchProvider>
+          </StandProvider>
+        </AuthProvider>
+      </PositionProvider>
+    </PaperProvider>
   );
 };
 
