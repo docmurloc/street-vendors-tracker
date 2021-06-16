@@ -174,7 +174,7 @@ function useStandData() {
 
         const reference = storage().ref(`Stands/${user.providerData[0].uid}/StandImage.jpg`);
 
-        await reference.putFile(photoData.uri);
+        await reference.putFile(photoData.path);
 
 
         const url = await reference.getDownloadURL();

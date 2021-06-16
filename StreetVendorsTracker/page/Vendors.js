@@ -4,6 +4,8 @@ import { View, Text, Button, Switch, TextInput, StyleSheet, Image, TouchableOpac
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
+import ImagePicker from 'react-native-image-crop-picker';
+
 import { useStand } from '../contexts/Stand';
 
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
@@ -12,33 +14,27 @@ const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-
 export default function Vendors({ navigation }) {
 
 
-    const { 
+    const {
         standData,
         updateStandName,
         updateStandDescription,
         updateStandLink,
         updateStandPhone,
         updateStandPhoto
-     } = useStand();
+    } = useStand();
 
-    const optionPhoto = {
-        mediaType : 'photo',
-        maxWidth : 350,
-        maxHeight : 200,
-        selectionLimit : 1,
-        noData: true
+    const optionCrop = {
+        width: 350,
+        height: 200,
+        cropping: true
     }
 
     const handleChooseImage = () => {
-        launchImageLibrary(optionPhoto, (response) => {
-            if (response) {
-                console.log("info image choosen", response, response.assets[0].uri);
-                updateStandPhoto({
-                    ...response.assets[0]
-                });
-            }
+        ImagePicker.openPicker(optionCrop).then(image => {
+            console.log(image);
+            updateStandPhoto(image);
         });
-    };
+    }
 
     return (
         <View>
