@@ -1,17 +1,13 @@
 import React from 'react';
 
-import { View, Text, Switch, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-import { launchImageLibrary } from 'react-native-image-picker';
 
 import ImagePicker from 'react-native-image-crop-picker';
 
 import { useStand } from '../contexts/Stand';
 
 import ButtonSetting from '../components/ButtonSettings';
-
-import { IconButton, Colors, Button } from 'react-native-paper';
-
 
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
 
@@ -21,7 +17,6 @@ export default function Vendors({ navigation }) {
 
     const {
         standData,
-        updateStandPhone,
         updateStandPhoto
     } = useStand();
 
@@ -72,19 +67,6 @@ export default function Vendors({ navigation }) {
                 value={standData?.address}
                 onPress={() => navigation.navigate('Position vendors')}
             />
-            <Button
-                icon="timetable"
-                color="#841584"
-                mode={'contained'}
-                onPress={() => navigation.navigate('Timetable')}
-            >TimeTable</Button>
-
-            <Button
-                icon="menu"
-                color="#841584"
-                mode={'contained'}
-                onPress={() => navigation.navigate('Items vendor')}
-            >Menu</Button>
         </View >
     )
 }

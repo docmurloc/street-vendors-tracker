@@ -4,16 +4,22 @@ import firestore from '@react-native-firebase/firestore';
 
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function Menu({ route }) {
+import { useStand } from '../contexts/Stand';
+
+
+export default function Menu() {
 
     const [items, setItems] = useState([]);
 
-    const { name, uid } = route.params;
+
+    const {
+        standData,
+    } = useStand();
 
     useEffect(() => {
             const subscriber = firestore()
                 .collection('Items')
-                .where('uid', '==', uid)
+                .where('uid', '==', standData?.uid)
                 .onSnapshot(querySnapshot => {
 
                     let itemsBuffer = []
@@ -39,7 +45,7 @@ export default function Menu({ route }) {
     return (
         <View>
             <Text>Menu page</Text>
-            <Text>{name}</Text>
+            <Text>{standData?.name}</Text>
 
             {items ?
                 <>
