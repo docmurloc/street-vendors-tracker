@@ -10,21 +10,12 @@ export default function Settings({ navigation }) {
 
     return (
         <View>
-            <Text>Settings page</Text>
             <Button
             title="Profile"
             onPress={() => navigation.navigate('Profile')}
             />
             <Button
             title="Your stand"
-            onPress={() => navigation.navigate('Vendors')}
-            />
-            <Button
-            title="Command"
-            onPress={() => navigation.navigate('Vendors')}
-            />
-            <Button
-            title="Panier"
             onPress={() => navigation.navigate('Vendors')}
             />
             <Button
