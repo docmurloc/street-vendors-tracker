@@ -8,6 +8,9 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import { useStand } from '../contexts/Stand';
 
+import ButtonSetting from '../components/ButtonSettings';
+
+
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
 
 
@@ -50,6 +53,11 @@ export default function Vendors({ navigation }) {
                     source={standData.photo ? standData.photo : defaultImage}
                 />
             </TouchableOpacity>
+            <ButtonSetting
+                title={"Name"}
+                value={standData?.name }
+                onPress={() => console.log('press')}
+            />
             <TextInput
                 style={styles.input}
                 onChangeText={updateStandName}
