@@ -56,7 +56,7 @@ export default function Vendors({ navigation }) {
             <ButtonSetting
                 title={"Name"}
                 value={standData?.name }
-                onPress={() => console.log('press')}
+                onPress={() => navigation.navigate('Setting name')}
             />
             <TextInput
                 style={styles.input}
