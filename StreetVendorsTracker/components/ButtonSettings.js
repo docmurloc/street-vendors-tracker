@@ -10,11 +10,15 @@ export default function ButtonSetting({ title, value, onPress }) {
 
     return (
         <TouchableOpacity
-                style={styles.button}
-                onPress={onPress}
-            >
+            style={styles.button}
+            onPress={onPress}
+        >
             <Text>{title}</Text>
-            <Text>{value ? value : 'loading'}</Text> 
+            <View
+                style={styles.mainValue}
+            >
+                <Text>{value ? value : 'loading'}</Text>
+            </View>
             <Text> <Icon name="arrow-right" size={30} color="#900" /> </Text>
 
         </TouchableOpacity>
@@ -28,6 +32,9 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    mainValue : {
+        width : '60%'
     }
 
 });

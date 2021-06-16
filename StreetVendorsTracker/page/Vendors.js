@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Button, Switch, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Switch, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import { launchImageLibrary } from 'react-native-image-picker';
 
@@ -9,6 +9,8 @@ import ImagePicker from 'react-native-image-crop-picker';
 import { useStand } from '../contexts/Stand';
 
 import ButtonSetting from '../components/ButtonSettings';
+
+import { IconButton, Colors, Button } from 'react-native-paper';
 
 
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
@@ -19,9 +21,6 @@ export default function Vendors({ navigation }) {
 
     const {
         standData,
-        updateStandName,
-        updateStandDescription,
-        updateStandLink,
         updateStandPhone,
         updateStandPhoto
     } = useStand();
@@ -54,49 +53,38 @@ export default function Vendors({ navigation }) {
                 />
             </TouchableOpacity>
             <ButtonSetting
-                title={"Name"}
-                value={standData?.name }
+                title={"Name :"}
+                value={standData?.name}
                 onPress={() => navigation.navigate('Setting name')}
             />
-            <TextInput
-                style={styles.input}
-                onChangeText={updateStandName}
-                value={standData?.name}
-                placeholder="name..."
-            />
-            <TextInput
-                style={styles.input}
-                onChangeText={updateStandDescription}
+            <ButtonSetting
+                title={"Descripton :"}
                 value={standData?.description}
-                placeholder="desciption..."
+                onPress={() => navigation.navigate('Setting description')}
             />
-            <TextInput
-                style={styles.input}
-                onChangeText={updateStandLink}
-                value={standData?.link}
-                placeholder="link..."
-            />
-            <TextInput
-                style={styles.input}
-                onChangeText={updateStandPhone}
+            <ButtonSetting
+                title={"Phone :"}
                 value={standData?.phone}
-                placeholder="phone..."
+                onPress={() => navigation.navigate('Setting phone')}
             />
-            <Button
-                title="position stand"
-                color="#841584"
+            <ButtonSetting
+                title={"Address :"}
+                value={standData?.address}
                 onPress={() => navigation.navigate('Position vendors')}
             />
             <Button
-                title="Timetable"
+                icon="timetable"
                 color="#841584"
+                mode={'contained'}
                 onPress={() => navigation.navigate('Timetable')}
-            />
+            >TimeTable</Button>
+
             <Button
-                title="Menu"
+                icon="menu"
                 color="#841584"
+                mode={'contained'}
                 onPress={() => navigation.navigate('Items vendor')}
-            />
+            >Menu</Button>
         </View >
     )
 }

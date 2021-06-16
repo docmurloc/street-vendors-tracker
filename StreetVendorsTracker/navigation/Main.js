@@ -12,6 +12,8 @@ import VendorTimeTablePage from '../page/VendorTimeTable';
 import VendorInformation from '../page/VendorsInformation';
 import Menu from '../page/Menu';
 import SettingName from '../page/SettingName';
+import SettingDescription from '../page/SettingDesciption';
+import SettingPhone from '../page/SettingPhone';
 import LoginPage from '../page/Login';
 
 import { useAuth } from '../contexts/Auth';
@@ -40,6 +42,8 @@ export default function Main() {
                         <Stack.Screen name="Information" component={VendorInformation} />
                         <Stack.Screen name="Setting name" component={SettingName} />
                         <Stack.Screen name="Menu" component={Menu} />
+                        <Stack.Screen name="Setting description" component={SettingDescription} />
+                        <Stack.Screen name="Setting phone" component={SettingPhone} />
                     </>
                 ): (
                     <>

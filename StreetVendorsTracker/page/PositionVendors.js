@@ -8,7 +8,7 @@ import { usePosition } from '../contexts/Position';
 import MapView, { Marker } from "react-native-maps";
 
 
-export default function PositionVendors() {
+export default function PositionVendors({ navigation }) {
 
     const { standData, updateStandCoords } = useStand();
 
@@ -59,6 +59,7 @@ export default function PositionVendors() {
                         color="#841584"
                         onPress={() => {
                             updateStandCoords(positionSelected);
+                            navigation.goBack();
                         }}
                     />
                 </>
