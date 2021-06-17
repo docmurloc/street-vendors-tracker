@@ -4,6 +4,8 @@ import firestore from '@react-native-firebase/firestore';
 
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
+import ItemCard from '../components/ItemCard';
+
 import { useStand } from '../contexts/Stand';
 
 
@@ -17,26 +19,26 @@ export default function Menu() {
     } = useStand();
 
     useEffect(() => {
-            const subscriber = firestore()
-                .collection('Items')
-                .where('uid', '==', standData?.uid)
-                .onSnapshot(querySnapshot => {
+        const subscriber = firestore()
+            .collection('Items')
+            .where('uid', '==', standData?.uid)
+            .onSnapshot(querySnapshot => {
 
-                    let itemsBuffer = []
+                let itemsBuffer = []
 
-                    querySnapshot.forEach(function (doc) {
-                        itemsBuffer.push({
-                            ...doc.data(),
-                            id: doc.id
-                        });
+                querySnapshot.forEach(function (doc) {
+                    itemsBuffer.push({
+                        ...doc.data(),
+                        id: doc.id
                     });
-
-                    console.log('stand items array : ', itemsBuffer);
-                    setItems(itemsBuffer);
                 });
 
-            // Stop listening for updates when no longer required
-            return () => subscriber();
+                console.log('stand items array : ', itemsBuffer);
+                setItems(itemsBuffer);
+            });
+
+        // Stop listening for updates when no longer required
+        return () => subscriber();
     }, []);
 
 
@@ -44,23 +46,17 @@ export default function Menu() {
 
     return (
         <View>
-            <Text>Menu page</Text>
-            <Text>{standData?.name}</Text>
-
             {items ?
                 <>
                     <FlatList
                         data={items}
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity
-                                    style={styles.button}
-                                    onPress={() => {
+                                <>
+                                    <ItemCard data={item} onPress={() => {
                                         console.log("press");
-                                    }}
-                                >
-                                    <Text>{item.name}</Text>
-                                </TouchableOpacity>
+                                    }} />
+                                </>
                             )
                         }}
                         keyExtractor={item => item.id}
