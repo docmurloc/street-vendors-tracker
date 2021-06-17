@@ -14,31 +14,31 @@ export default function VendorTimeTable() {
     return (
         <View>
             <TimeSlider
-                day={'Lundi'}
+                day={0}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Mardi'}
+                day={1}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Mercredi'}
+                day={2}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Jeudi'}
+                day={3}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Vendredi'}
+                day={4}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Samedi'}
+                day={5}
                 handleValue={updateStandTimeTable}
             />
             <TimeSlider
-                day={'Dimanche'}
+                day={6}
                 handleValue={updateStandTimeTable}
             />
         </View>

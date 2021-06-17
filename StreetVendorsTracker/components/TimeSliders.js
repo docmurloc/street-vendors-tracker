@@ -8,6 +8,16 @@ import { useAuth } from '../contexts/Auth';
 
 import firestore from '@react-native-firebase/firestore';
 
+const days = {
+    0 : 'Lundi',
+    1 : 'Mardi',
+    2 : 'Mercredi',
+    3 : 'Jeudi',
+    4 : 'Vendredi',
+    5 : 'Samedi',
+    6 : 'Dimanche',
+}
+
 export default function TimeSlider({ day, handleValue }) {
 
     const [selected, setSelected] = useState([0, 24]);
@@ -43,7 +53,7 @@ export default function TimeSlider({ day, handleValue }) {
         <View
             style={styles.container}
         >
-            <Text>{day} from {selected[0]} to {selected[1]}</Text>
+            <Text>{days[day]} from {selected[0]} to {selected[1]}</Text>
             <MultiSlider
 
                 min={0}
