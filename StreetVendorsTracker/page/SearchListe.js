@@ -5,6 +5,8 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native
 import { useSearch } from '../contexts/Search';
 
 import SearchHeader from '../components/SearchHeader';
+import VendorCard from '../components/VendorCard';
+
 
 export default function SearchListe({ navigation }) {
 
@@ -19,20 +21,15 @@ export default function SearchListe({ navigation }) {
 
             {searchResult ?
                 <>
-                    <Text>Flatlist</Text>
                     <FlatList
                         data={searchResult}
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity
-                                    style={styles.button}
-                                    onPress={() => {
-                                        console.log("press");
-                                        navigation.navigate('Information', item);
-                                    }}
-                                >
-                                    <Text>{item.name}</Text>
-                                </TouchableOpacity>
+
+                                <VendorCard data={item} onPress={() => {
+                                    console.log("press");
+                                    navigation.navigate('Information', item);
+                                }} />
                             )
                         }}
                         keyExtractor={item => item.id}

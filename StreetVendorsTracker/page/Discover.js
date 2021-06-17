@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 import firestore from '@react-native-firebase/firestore';
+
+import VendorCard from '../components/VendorCard';
 
 export default function Discover({ navigation }) {
 
@@ -33,24 +35,20 @@ export default function Discover({ navigation }) {
     }, []);
 
     return (
-        <View>
-            <Text>Discover page</Text>
+        <View
+        style={styles.content}
+        >
             {standData ?
                 <>
-                    <Text>Flatlist</Text>
                     <FlatList
                         data={standData}
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity
-                                    style={styles.button}
-                                    onPress={() => {
-                                        console.log("press");
-                                        navigation.navigate('Information', item);
-                                    }}
-                                >
-                                    <Text>{item.name}</Text>
-                                </TouchableOpacity>
+
+                                <VendorCard data={item} onPress={() => {
+                                    console.log("press");
+                                    navigation.navigate('Information', item);
+                                }} />
                             )
                         }}
                         keyExtractor={item => item.id}
@@ -64,10 +62,9 @@ export default function Discover({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
+    content: {
+        alignItems: 'center',
+        display: 'flex',
     },
     imageStand: {
         width: 350,

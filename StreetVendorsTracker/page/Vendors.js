@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+
+import { IconButton, Colors } from 'react-native-paper';
 
 
 import ImagePicker from 'react-native-image-crop-picker';
@@ -21,8 +23,8 @@ export default function Vendors({ navigation }) {
     } = useStand();
 
     const optionCrop = {
-        width: 350,
-        height: 200,
+        width: 300,
+        height: 150,
         cropping: true
     }
 
@@ -35,18 +37,18 @@ export default function Vendors({ navigation }) {
 
     return (
         <View>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                    console.log("press");
-                    handleChooseImage();
-                }}
+
+            <ImageBackground
+                style={styles.imageStand}
+                source={standData.photo ? standData.photo : defaultImage}
             >
-                <Image
-                    style={styles.imageStand}
-                    source={standData.photo ? standData.photo : defaultImage}
+                <IconButton
+                    icon="camera"
+                    color={Colors.red500}
+                    size={20}
+                    onPress={() => handleChooseImage()}
                 />
-            </TouchableOpacity>
+            </ImageBackground>
             <ButtonSetting
                 title={"Name :"}
                 value={standData?.name}
@@ -78,8 +80,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     imageStand: {
-        width: 350,
-        height: 200
+        width: 300,
+        height: 150
     },
     button: {
         alignItems: "center",
