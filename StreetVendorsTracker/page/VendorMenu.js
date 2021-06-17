@@ -4,12 +4,14 @@ import firestore from '@react-native-firebase/firestore';
 
 import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
+import { FAB } from 'react-native-paper';
+
 import ItemCard from '../components/ItemCard';
 
 import { useStand } from '../contexts/Stand';
 
 
-export default function Menu() {
+export default function VendorMenu({ navigation }) {
 
     const [items, setItems] = useState([]);
 
@@ -45,7 +47,9 @@ export default function Menu() {
 
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             {items ?
                 <>
                     <FlatList
@@ -65,16 +69,23 @@ export default function Menu() {
                 :
                 <Text>loading...</Text>
             }
+            <FAB
+                style={styles.fab}
+                small
+                icon="plus"
+                onPress={() => navigation.navigate('Create item')}
+            />
         </View>
     )
 }
 
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
+    container: {
+        backgroundColor: 'red',
+        display: 'flex',
+        alignItems: 'center',
+        flex: 1
     },
     imageStand: {
         width: 350,
@@ -84,5 +95,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#DDDDDD",
         padding: 10
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
     },
 });

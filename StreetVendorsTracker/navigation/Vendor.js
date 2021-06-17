@@ -6,7 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import VendorsPage from '../page/Vendors';
 import VendorTimeTablePage from '../page/VendorTimeTable';
-import Menu from '../page/Menu';
+import VendorMenu from '../page/VendorMenu';
 
 
 
@@ -17,7 +17,7 @@ export default function Vendor() {
     <Tab.Navigator>
       <Tab.Screen name="Description" component={VendorsPage} />
       <Tab.Screen name="TimeTable" component={VendorTimeTablePage} />
-      <Tab.Screen name="Menu" component={Menu} />
+      <Tab.Screen name="Menu" component={VendorMenu} />
     </Tab.Navigator>
   );
 }
