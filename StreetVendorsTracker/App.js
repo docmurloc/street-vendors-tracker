@@ -27,6 +27,7 @@ import { AuthProvider } from './contexts/Auth';
 import { PositionProvider } from './contexts/Position';
 import { StandProvider } from './contexts/Stand';
 import { SearchProvider } from './contexts/Search';
+import { ItemProvider } from './contexts/Item'
 
 
 
@@ -41,10 +42,12 @@ const App = () => {
         <AuthProvider>
           <StandProvider>
             <SearchProvider>
-              <NavigationContainer>
-                <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-                <MainNavigation />
-              </NavigationContainer>
+              <ItemProvider>
+                <NavigationContainer>
+                  <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+                  <MainNavigation />
+                </NavigationContainer>
+              </ItemProvider>
             </SearchProvider>
           </StandProvider>
         </AuthProvider>

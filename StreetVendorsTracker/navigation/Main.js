@@ -11,6 +11,9 @@ import VendorInformation from '../page/VendorsInformation';
 import SettingName from '../page/SettingName';
 import SettingDescription from '../page/SettingDesciption';
 import SettingPhone from '../page/SettingPhone';
+import SettingItemDescription from '../page/SettingItemDescription';
+import SettingItemPrice from '../page/SettingItemPrice';
+import SettingItemName from '../page/SettingItemName';
 import LoginPage from '../page/Login';
 
 import Vendor from './Vendor';
@@ -41,6 +44,9 @@ export default function Main() {
                         <Stack.Screen name="Setting name" component={SettingName} />
                         <Stack.Screen name="Setting description" component={SettingDescription} />
                         <Stack.Screen name="Setting phone" component={SettingPhone} />
+                        <Stack.Screen name="Setting item name" component={SettingItemName} />
+                        <Stack.Screen name="Setting item description" component={SettingItemDescription} />
+                        <Stack.Screen name="Setting item price" component={SettingItemPrice} />
                     </>
                 ): (
                     <>

@@ -17,7 +17,7 @@ export default function ButtonSetting({ title, value, onPress }) {
             <View
                 style={styles.mainValue}
             >
-                <Text>{value ? value : 'loading'}</Text>
+                <Text>{value ? value : 'not set'}</Text>
             </View>
             <Text> <Icon name="arrow-right" size={30} color="#900" /> </Text>
 

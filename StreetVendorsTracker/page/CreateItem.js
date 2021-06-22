@@ -1,40 +1,34 @@
-import React , { useState } from 'react';
+import React from 'react';
 
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
 
-import { launchImageLibrary } from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import { useStand } from '../contexts/Stand';
+import { useItem } from '../contexts/Item'
+
+import ButtonSetting from '../components/ButtonSettings';
 
 
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
 
 
-export default function CreateItem() {
-
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState(null);
+export default function CreateItem({navigation}) {
 
     const { createItem } = useStand();
+    const { name, description, price, image, setImage} = useItem();
 
-    const optionPhoto = {
-        mediaType : 'photo',
-        maxWidth : 350,
-        maxHeight : 200,
-        selectionLimit : 1,
-        noData: true
+    const optionCrop = {
+        width: 300,
+        height: 150,
+        cropping: true
     }
 
     const handleChooseImage = () => {
-        launchImageLibrary(optionPhoto, (response) => {
-            if (response) {
-                console.log("info image choosen", response, response.assets[0].uri);
-                setImage({
-                    ...response.assets[0]
-                });
-            }
+
+        ImagePicker.openPicker(optionCrop).then(photo => {
+            console.log(photo);
+            setImage({ uri: photo.path});
         });
     };
 
@@ -52,29 +46,27 @@ export default function CreateItem() {
                     source={ image ? image : defaultImage }
                 />
             </TouchableOpacity>
-            <TextInput
-                style={styles.input}
-                onChangeText={setName}
+            <ButtonSetting
+                title={"Name :"}
                 value={name}
-                placeholder="name..."
+                onPress={() => navigation.navigate('Setting item name')}
             />
-            <TextInput
-                style={styles.input}
-                onChangeText={setDescription}
+            <ButtonSetting
+                title={"Descripton :"}
                 value={description}
-                placeholder="desciption..."
+                onPress={() => navigation.navigate('Setting item description')}
             />
-            <TextInput
-                style={styles.input}
-                onChangeText={setPrice}
+            <ButtonSetting
+                title={"Price :"}
                 value={price}
-                placeholder="price..."
+                onPress={() => navigation.navigate('Setting item price')}
             />
             <Button
                 title="Create item"
                 color="#841584"
                 onPress={() => {
                     createItem(name, description, price, image);
+                    navigation.goBack();
                     //navigation.navigate('Position vendors')
                 } }
             />
