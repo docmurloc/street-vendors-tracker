@@ -16,7 +16,7 @@ const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-
 export default function CreateItem({navigation}) {
 
     const { createItem } = useStand();
-    const { name, description, price, image, setImage} = useItem();
+    const { name, description, price, image, setImage, resetItem} = useItem();
 
     const optionCrop = {
         width: 300,
@@ -66,8 +66,8 @@ export default function CreateItem({navigation}) {
                 color="#841584"
                 onPress={() => {
                     createItem(name, description, price, image);
+                    resetItem();
                     navigation.goBack();
-                    //navigation.navigate('Position vendors')
                 } }
             />
         </View>

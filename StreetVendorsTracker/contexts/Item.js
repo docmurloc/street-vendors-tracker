@@ -17,6 +17,13 @@ function useItemInformation() {
     const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
 
+    const resetItem = () => {
+        setImage('');
+        setDescription('');
+        setPrice('');
+        setImage(null);
+    }
+
 
     return {
         name,
@@ -26,6 +33,7 @@ function useItemInformation() {
         price,
         setPrice,
         image,
-        setImage
+        setImage,
+        resetItem
     };
 }
