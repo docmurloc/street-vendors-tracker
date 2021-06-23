@@ -194,7 +194,7 @@ function useStandData() {
             });
     }
 
-    const createItem = async (name, desciption, price, photoData) => {
+    const createItem = async (name, description, price, photoData) => {
         console.log("photo data = ", photoData);
 
         const reference = storage().ref(`Items/${user.providerData[0].uid}/${photoData.fileName}`);
@@ -210,7 +210,7 @@ function useStandData() {
             .collection('Items')
             .add({
                 name,
-                desciption,
+                description,
                 price,
                 photo: {
                     uri: url
@@ -220,6 +220,48 @@ function useStandData() {
             .then(() => {
                 console.log('Image user stand upload');
             });
+    }
+
+    const updateItem = async (item, name, description, price, photo) => {
+        console.log('item ');
+        console.log( item);
+        console.log(name, description, price, photo);
+
+        const data = {
+            description,
+            name,
+            photo,
+            price,
+            uid : item.uid
+        }
+
+        if (!photo.uri.includes('http')) {
+            const reference = storage().ref(`Items/${user.providerData[0].uid}/${item.id}.jpg`);
+
+            await reference.putFile(photo.uri);
+    
+    
+            data.photo.uri = await reference.getDownloadURL();
+    
+        }
+
+        firestore()
+            .collection('Items')
+            .doc(item.id)
+            .set(data, { merge: true })
+            .then(() => {
+                console.log('Item stand updated!');
+
+            });
+    }
+
+    const deleteItem = async (item) => {
+        console.log('item ');
+
+        firestore()
+            .collection('Items')
+            .doc(item.id)
+            .delete()
     }
 
     return {
@@ -232,6 +274,8 @@ function useStandData() {
         updateStandCoords,
         updateStandPhoto,
         createItem,
-        updateStandTimeTable
+        updateStandTimeTable,
+        updateItem,
+        deleteItem
     };
 }

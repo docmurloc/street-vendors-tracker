@@ -7,6 +7,7 @@ import ProfilePage from '../page/Profile';
 import PositionVendorsPage from '../page/PositionVendors';
 import VendorItemsPage from '../page/VendorItems';
 import CreateItemsPage from '../page/CreateItem';
+import ChangeItem from '../page/ChangeItem';
 import VendorInformation from '../page/VendorsInformation';
 import SettingName from '../page/SettingName';
 import SettingDescription from '../page/SettingDesciption';
@@ -40,6 +41,7 @@ export default function Main() {
                         <Stack.Screen name="Position vendors" component={PositionVendorsPage} />
                         <Stack.Screen name="Items vendor" component={VendorItemsPage} />
                         <Stack.Screen name="Create item" component={CreateItemsPage} />
+                        <Stack.Screen name="Change item" component={ChangeItem} />
                         <Stack.Screen name="Information" component={VendorInformation} />
                         <Stack.Screen name="Setting name" component={SettingName} />
                         <Stack.Screen name="Setting description" component={SettingDescription} />

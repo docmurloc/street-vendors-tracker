@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 
 const authContext = createContext();
 
@@ -17,6 +17,21 @@ function useItemInformation() {
     const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
 
+    const [selectedItem, setSelectedItem] = useState(null);
+
+
+    useEffect(() => {
+        if (selectedItem) {
+            console.log('item selected ', selectedItem);
+            setName(selectedItem.name);
+            setDescription(selectedItem.description);
+            setPrice(selectedItem.price);
+            setImage(selectedItem.photo)
+        }
+    }, [selectedItem])
+
+
+
     const resetItem = () => {
         setImage('');
         setDescription('');
@@ -34,6 +49,8 @@ function useItemInformation() {
         setPrice,
         image,
         setImage,
-        resetItem
+        resetItem,
+        selectedItem,
+        setSelectedItem
     };
 }

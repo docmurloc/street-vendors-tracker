@@ -9,6 +9,7 @@ import { FAB } from 'react-native-paper';
 import ItemCard from '../components/ItemCard';
 
 import { useStand } from '../contexts/Stand';
+import { useItem } from '../contexts/Item';
 
 
 export default function VendorMenu({ navigation }) {
@@ -19,6 +20,10 @@ export default function VendorMenu({ navigation }) {
     const {
         standData,
     } = useStand();
+
+    const {
+        setSelectedItem
+    } = useItem()
 
     useEffect(() => {
         const subscriber = firestore()
@@ -59,6 +64,8 @@ export default function VendorMenu({ navigation }) {
                                 <>
                                     <ItemCard data={item} onPress={() => {
                                         console.log("press");
+                                        setSelectedItem(item);
+                                        navigation.navigate('Change item');
                                     }} />
                                 </>
                             )
