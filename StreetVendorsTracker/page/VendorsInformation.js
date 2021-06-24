@@ -66,9 +66,9 @@ export default function VendorInformation({ navigation }) {
             <FAB
                 style={styles.fab}
                 small
-                icon="menu"
-                label="Menu"
-                accessibilityLabel="Menu"
+                icon="heart"
+                label="Favorie"
+                accessibilityLabel="Favorie"
                 onPress={() => {
                     console.log("press");
                     navigation.navigate('Menu', route.params);
