@@ -23,6 +23,8 @@ function useStandData() {
     const [standData, setStandData] = useState(null);
     const [items, setItems] = useState([]);
 
+    const [selectedStand, setSelectedStand] = useState(null);
+
     const { user } = useAuth();
 
     useEffect(() => {
@@ -267,6 +269,7 @@ function useStandData() {
     return {
         standData,
         items,
+        selectedStand,
         updateStandName,
         updateStandDescription,
         updateStandLink,
@@ -276,6 +279,7 @@ function useStandData() {
         createItem,
         updateStandTimeTable,
         updateItem,
-        deleteItem
+        deleteItem,
+        setSelectedStand
     };
 }

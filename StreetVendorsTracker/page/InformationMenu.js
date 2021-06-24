@@ -4,21 +4,19 @@ import firestore from '@react-native-firebase/firestore';
 
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-import { FAB } from 'react-native-paper';
-
 import ItemCard from '../components/ItemCard';
 
 import { useStand } from '../contexts/Stand';
 import { useItem } from '../contexts/Item';
 
 
-export default function VendorMenu({ navigation }) {
+export default function InformationMenu({ navigation }) {
 
     const [items, setItems] = useState([]);
 
 
     const {
-        standData,
+        selectedStand,
     } = useStand();
 
     const {
@@ -28,7 +26,7 @@ export default function VendorMenu({ navigation }) {
     useEffect(() => {
         const subscriber = firestore()
             .collection('Items')
-            .where('uid', '==', standData?.uid)
+            .where('uid', '==', selectedStand?.uid)
             .onSnapshot(querySnapshot => {
 
                 let itemsBuffer = []
@@ -65,7 +63,7 @@ export default function VendorMenu({ navigation }) {
                                     <ItemCard data={item} onPress={() => {
                                         console.log("press");
                                         setSelectedItem(item);
-                                        navigation.navigate('Change item');
+                                        navigation.navigate('Information item');
                                     }} />
                                 </>
                             )
@@ -76,12 +74,6 @@ export default function VendorMenu({ navigation }) {
                 :
                 <Text>loading...</Text>
             }
-            <FAB
-                style={styles.fab}
-                small
-                icon="plus"
-                onPress={() => navigation.navigate('Create item')}
-            />
         </View>
     )
 }

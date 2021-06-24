@@ -6,9 +6,13 @@ import firestore from '@react-native-firebase/firestore';
 
 import VendorCard from '../components/VendorCard';
 
+import { useStand } from '../contexts/Stand';
+
 export default function Discover({ navigation }) {
 
     const [standData, setStandData] = useState(null);
+
+    const { setSelectedStand } = useStand();
 
     useEffect(() => {
         const subscriber = firestore()
@@ -47,6 +51,7 @@ export default function Discover({ navigation }) {
 
                                 <VendorCard data={item} onPress={() => {
                                     console.log("press");
+                                    setSelectedStand(item);
                                     navigation.navigate('Information', item);
                                 }} />
                             )
