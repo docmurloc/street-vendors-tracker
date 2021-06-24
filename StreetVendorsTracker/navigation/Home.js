@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import DiscoverPage from '../page/Discover';
 import SearchTab from './Search';
-import FavoritesPage from '../page/Favorites';
 import SettingsPage from '../page/Settings';
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +16,6 @@ export default function Home() {
             <Tab.Navigator>
                 <Tab.Screen name="Discover" component={DiscoverPage} />
                 <Tab.Screen name="Search" component={SearchTab} />
-                <Tab.Screen name="Favorites" component={FavoritesPage} />
                 <Tab.Screen name="Settings" component={SettingsPage} />
             </Tab.Navigator>
     );

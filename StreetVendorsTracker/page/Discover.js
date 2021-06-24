@@ -6,6 +6,9 @@ import firestore from '@react-native-firebase/firestore';
 
 import VendorCard from '../components/VendorCard';
 
+import SearchHeader from '../components/SearchHeader';
+
+
 import { useStand } from '../contexts/Stand';
 
 export default function Discover({ navigation }) {
@@ -42,6 +45,7 @@ export default function Discover({ navigation }) {
         <View
         style={styles.content}
         >
+            <SearchHeader />
             {standData ?
                 <>
                     <FlatList

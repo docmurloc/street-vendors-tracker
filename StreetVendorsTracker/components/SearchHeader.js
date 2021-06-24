@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { View, Text, Button, Modal, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Modal, Pressable, StyleSheet } from 'react-native';
+
+import { Button } from 'react-native-paper';
 
 import MapView, { Marker } from "react-native-maps";
 
@@ -12,9 +14,11 @@ export default function SearchHeader() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
+
+
     const { position, askLocationPermission } = usePosition();
 
-    const { searchPosition, updateSearchPosition } = useSearch();
+    const { searchPosition, updateSearchPosition, addressPosition } = useSearch();
 
     const [selectedPosition, setSelectedPosition] = useState(searchPosition);
 
@@ -30,11 +34,23 @@ export default function SearchHeader() {
     }
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <Button
-                title="Change position"
+                contentStyle={styles.buttonAddress}
+                icon="map-marker"
+                mode="contained"
                 onPress={() => setModalVisible(!modalVisible)}
-            />
+            >
+                <Text
+                    numberOfLines={2}
+                >
+                    {addressPosition}
+
+                </Text>
+            </Button>
+
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -117,6 +133,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 22
     },
+    container: {
+        width: '100%'
+    },
+    buttonAddress: {
+    },
     modalView: {
         margin: 20,
         backgroundColor: "white",
@@ -136,12 +157,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         elevation: 2
-    },
-    buttonOpen: {
-        backgroundColor: "#F194FF",
-    },
-    buttonClose: {
-        backgroundColor: "#2196F3",
     },
     textStyle: {
         color: "white",
