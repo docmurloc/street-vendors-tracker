@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, Button, ImageBackground } from 'react-native';
+
+import { IconButton } from 'react-native-paper';
+
 
 import ImagePicker from 'react-native-image-crop-picker';
 
@@ -13,10 +16,10 @@ import ButtonSetting from '../components/ButtonSettings';
 const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-vendors-tracker.appspot.com/o/imagePlaceholder.png?alt=media&token=23dc53d7-b447-4c78-96d8-cb1b6634703b' }
 
 
-export default function CreateItem({navigation}) {
+export default function CreateItem({ navigation }) {
 
     const { createItem } = useStand();
-    const { name, description, price, image, setImage, resetItem} = useItem();
+    const { name, description, price, image, setImage, resetItem } = useItem();
 
     const optionCrop = {
         width: 300,
@@ -28,24 +31,25 @@ export default function CreateItem({navigation}) {
 
         ImagePicker.openPicker(optionCrop).then(photo => {
             console.log(photo);
-            setImage({ uri: photo.path});
+            setImage({ uri: photo.path });
         });
     };
 
     return (
-        <View>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                    console.log("press");
-                    handleChooseImage();
-                }}
+        <View
+            style={styles.container}
+        >
+            <ImageBackground
+                style={styles.imageItem}
+                source={image ? image : defaultImage}
             >
-                <Image
-                    style={styles.imageItem}
-                    source={ image ? image : defaultImage }
+                <IconButton
+                    icon="camera"
+                    color={'rgb(98, 154, 224)'}
+                    size={30}
+                    onPress={() => handleChooseImage()}
                 />
-            </TouchableOpacity>
+            </ImageBackground>
             <ButtonSetting
                 title={"Name :"}
                 value={name}
@@ -62,13 +66,13 @@ export default function CreateItem({navigation}) {
                 onPress={() => navigation.navigate('Setting item price')}
             />
             <Button
-                title="Create item"
-                color="#841584"
+                title="Ajouter"
+                color="rgba(98,154,224,1)"
                 onPress={() => {
                     createItem(name, description, price, image);
                     resetItem();
                     navigation.goBack();
-                } }
+                }}
             />
         </View>
     )
@@ -81,12 +85,19 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     imageItem: {
-        width: 350,
-        height: 200
+        width: 300,
+        height: 150
     },
     button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
         padding: 10
+    },
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
     },
 });

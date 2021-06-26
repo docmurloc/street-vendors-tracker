@@ -89,7 +89,7 @@ export default function VendorMenu({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'red',
+        backgroundColor: 'rgba(255,232,225,1)',
         display: 'flex',
         alignItems: 'center',
         flex: 1
@@ -108,5 +108,6 @@ const styles = StyleSheet.create({
         margin: 16,
         right: 0,
         bottom: 0,
+        backgroundColor: "rgba(136,184,50,1)",
     },
 });

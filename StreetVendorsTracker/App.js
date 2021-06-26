@@ -43,7 +43,7 @@ const App = () => {
           <StandProvider>
             <SearchProvider>
               <ItemProvider>
-                <NavigationContainer>
+                <NavigationContainer >
                   <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
                   <MainNavigation />
                 </NavigationContainer>

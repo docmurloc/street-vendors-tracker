@@ -9,13 +9,13 @@ import { useAuth } from '../contexts/Auth';
 import firestore from '@react-native-firebase/firestore';
 
 const days = {
-    0 : 'Lundi',
-    1 : 'Mardi',
-    2 : 'Mercredi',
-    3 : 'Jeudi',
-    4 : 'Vendredi',
-    5 : 'Samedi',
-    6 : 'Dimanche',
+    0: 'Lundi',
+    1: 'Mardi',
+    2: 'Mercredi',
+    3: 'Jeudi',
+    4: 'Vendredi',
+    5: 'Samedi',
+    6: 'Dimanche',
 }
 
 export default function TimeSlider({ day, handleValue }) {
@@ -53,7 +53,7 @@ export default function TimeSlider({ day, handleValue }) {
         <View
             style={styles.container}
         >
-            <Text>{days[day]} from {selected[0]} to {selected[1]}</Text>
+            <Text style={styles.text} >{days[day]} from {selected[0]} to {selected[1]}</Text>
             <MultiSlider
 
                 min={0}
@@ -70,6 +70,17 @@ const styles = StyleSheet.create({
     container: {
         margin: 5,
         alignItems: 'center',
-        borderWidth: 1,
+        backgroundColor: "rgba(146,213,230,1)",
+        shadowColor: "rgba(98,154,224,1)",
+        shadowOffset: {
+            height: 2,
+            width: 0
+        },
+        elevation: 9,
+        shadowOpacity: 1,
+        shadowRadius: 3,
     },
+    text : {
+        color : 'rgba(228, 102, 64,1)'
+    }
 });

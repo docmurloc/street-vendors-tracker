@@ -13,13 +13,13 @@ export default function ButtonSetting({ title, value, onPress }) {
             style={styles.button}
             onPress={onPress}
         >
-            <Text>{title}</Text>
+            <Text style={styles.text} >{title}</Text>
             <View
                 style={styles.mainValue}
             >
-                <Text>{value ? value : 'not set'}</Text>
+                <Text style={styles.text} >{value ? value : 'not set'}</Text>
             </View>
-            <Text> <Icon name="arrow-right" size={30} color="#900" /> </Text>
+            <Text> <Icon name="arrow-right" size={30} color="rgba(136,184,50,1)" /> </Text>
 
         </TouchableOpacity>
     )
@@ -28,13 +28,26 @@ export default function ButtonSetting({ title, value, onPress }) {
 const styles = StyleSheet.create({
     button: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
+        backgroundColor: "rgba(146,213,230,1)",
+        shadowColor: "rgba(98,154,224,1)",
+        shadowOffset: {
+            height: 3,
+            width: 0
+        },
+        elevation: 9,
+        shadowOpacity: 1,
+        shadowRadius: 3,
+        width: '100%',
+        height: 60
     },
-    mainValue : {
-        width : '60%'
+    mainValue: {
+        width: '60%'
+    },
+    text : {
+        color : 'rgba(228, 102, 64,1)'
     }
 
 });

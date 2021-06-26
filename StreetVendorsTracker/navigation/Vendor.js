@@ -14,7 +14,14 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function Vendor() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: 'rgb(228, 102, 64)',
+        inactiveTintColor: 'rgb(146, 213, 230)',
+        activeBackgroundColor: 'rgb(146, 213, 230)',
+        inactiveBackgroundColor: 'rgb(228, 102, 64)'
+      }}
+    >
       <Tab.Screen name="Description" component={VendorsPage} />
       <Tab.Screen name="TimeTable" component={VendorTimeTablePage} />
       <Tab.Screen name="Menu" component={VendorMenu} />

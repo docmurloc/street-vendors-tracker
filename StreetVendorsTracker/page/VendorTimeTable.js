@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import TimeSlider from '../components/TimeSliders';
 
@@ -12,7 +12,9 @@ export default function VendorTimeTable() {
     const { updateStandTimeTable } = useStand();
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <TimeSlider
                 day={0}
                 handleValue={updateStandTimeTable}
@@ -44,3 +46,13 @@ export default function VendorTimeTable() {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
+    },
+});

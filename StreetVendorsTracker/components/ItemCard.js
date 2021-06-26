@@ -21,6 +21,8 @@ export default function ItemCard({ data, onPress, children }) {
                 title={data.name}
                 subtitle={data.price}
                 subtitleNumberOfLines={2}
+                subtitleStyle={styles.text}
+                titleStyle={styles.text}
             />
             {children}
         </Card>
@@ -35,10 +37,21 @@ const styles = StyleSheet.create({
     },
     card: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "rgba(146,213,230,1)",
+        shadowColor: "rgba(98,154,224,1)",
+        shadowOffset: {
+            height: 3,
+            width: 0
+        },
+        elevation: 9,
+        shadowOpacity: 1,
+        shadowRadius: 3,
         borderRadius: 30,
         padding: 10,
         marginTop: 5,
         width: '100%'
     },
+    text : {
+        color : 'rgba(228, 102, 64,1)'
+    }
 });
