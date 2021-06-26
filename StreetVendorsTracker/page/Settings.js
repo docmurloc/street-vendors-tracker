@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 
 import { useAuth } from '../contexts/Auth';
 
@@ -9,19 +9,29 @@ export default function Settings({ navigation }) {
     const { SignOut } = useAuth();
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <Button
-            title="Profile"
-            onPress={() => navigation.navigate('Profile')}
-            />
-            <Button
-            title="Your stand"
+            title="Mon stand"
+            color="rgba(98,154,224,1)"
             onPress={() => navigation.navigate('Vendors')}
             />
             <Button
-            title="Sign out"
+            title="Déconnexion"
+            color="rgba(98,154,224,1)"
             onPress={() => SignOut()}
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
+    },
+});

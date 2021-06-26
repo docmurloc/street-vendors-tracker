@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, StyleSheet, Image, TouchableOpacity, Button, ImageBackground } from 'react-native';
+import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import { IconButton } from 'react-native-paper';
 
@@ -79,19 +79,9 @@ export default function CreateItem({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-    },
     imageItem: {
         width: 300,
         height: 150
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
     },
     container: {
         flex: 1,

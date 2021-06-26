@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { View, StyleSheet, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, Button, ImageBackground } from 'react-native';
+
+import { IconButton } from 'react-native-paper';
+
 
 import ImagePicker from 'react-native-image-crop-picker';
 
@@ -33,19 +36,20 @@ export default function ChangeItem({navigation}) {
     };
 
     return (
-        <View>
-            <TouchableOpacity
-                style={styles.button}
-                onPress={() => {
-                    console.log("press");
-                    handleChooseImage();
-                }}
+        <View
+            style={styles.container}
+        >
+            <ImageBackground
+                style={styles.imageItem}
+                source={image ? image : defaultImage}
             >
-                <Image
-                    style={styles.imageItem}
-                    source={ image ? image : defaultImage }
+                <IconButton
+                    icon="camera"
+                    color={'rgb(98, 154, 224)'}
+                    size={30}
+                    onPress={() => handleChooseImage()}
                 />
-            </TouchableOpacity>
+            </ImageBackground>
             <ButtonSetting
                 title={"Name :"}
                 value={name}
@@ -63,7 +67,7 @@ export default function ChangeItem({navigation}) {
             />
             <Button
                 title="update"
-                color="#841584"
+                color="rgba(98,154,224,1)"
                 onPress={() => {
                     updateItem(selectedItem, name, description, price, image);
                     resetItem();
@@ -72,7 +76,7 @@ export default function ChangeItem({navigation}) {
             />
             <Button
                 title="Delete item"
-                color="#841584"
+                color="rgba(98,154,224,1)"
                 onPress={() => {
                     deleteItem(selectedItem);
                     resetItem();
@@ -84,18 +88,15 @@ export default function ChangeItem({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-    },
     imageItem: {
-        width: 350,
-        height: 200
+        width: 300,
+        height: 150
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
     },
 });
