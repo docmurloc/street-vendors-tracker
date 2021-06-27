@@ -9,13 +9,13 @@ import { useAuth } from '../contexts/Auth';
 import firestore from '@react-native-firebase/firestore';
 
 const days = {
+    6: 'Dimanche',
     0: 'Lundi',
     1: 'Mardi',
     2: 'Mercredi',
     3: 'Jeudi',
     4: 'Vendredi',
     5: 'Samedi',
-    6: 'Dimanche',
 }
 
 export default function TimeSlider({ day, handleValue }) {

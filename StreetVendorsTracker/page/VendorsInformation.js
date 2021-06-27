@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { Title, FAB, Divider, Paragraph, Subheading } from 'react-native-paper';
 
 import firestore from '@react-native-firebase/firestore';
@@ -41,8 +41,8 @@ export default function VendorInformation({ navigation }) {
     console.log("time ", time, currentDay);
 
     return (
-        <View
-            style={styles.container}
+        <ScrollView
+        contentContainerStyle={styles.container}
         >
             <Image
                 style={styles.imageStand}
@@ -63,18 +63,7 @@ export default function VendorInformation({ navigation }) {
             <Subheading>Desciption : </Subheading>
             <Paragraph>{selectedStand?.description}</Paragraph>
             <Divider style={styles.divider} />
-            <FAB
-                style={styles.fab}
-                small
-                icon="heart"
-                label="Favorie"
-                accessibilityLabel="Favorie"
-                onPress={() => {
-                    console.log("press");
-                    navigation.navigate('Menu', route.params);
-                }}
-            />
-        </View>
+        </ScrollView>
     )
 }
 
@@ -85,8 +74,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     imageStand: {
-        width: 350,
-        height: 200
+        width: 300,
+        height: 150
     },
     button: {
         alignItems: "center",
@@ -102,7 +91,10 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        padding: 5
+        padding: 5,
+        alignItems: 'center',
+        backgroundColor: "rgba(255,232,225,1)"
+
     },
     divider: {
         marginVertical: 5

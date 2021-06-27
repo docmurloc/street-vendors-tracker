@@ -81,10 +81,10 @@ export default function InformationMenu({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'red',
         display: 'flex',
         alignItems: 'center',
-        flex: 1
+        flex: 1,
+        backgroundColor: "rgba(255,232,225,1)"
     },
     imageStand: {
         width: 350,

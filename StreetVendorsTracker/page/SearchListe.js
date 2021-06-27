@@ -38,7 +38,7 @@ export default function SearchListe({ navigation }) {
                     />
                 </>
                 :
-                <Text>Select a search position</Text>
+                <Text>Sélectionnez une position pour chercher un stand</Text>
             }
         </View>
     )

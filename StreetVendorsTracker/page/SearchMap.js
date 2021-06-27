@@ -35,14 +35,14 @@ export default function SearchMap() {
                             <Marker
                                 key={stand.id}
                                 coordinate={stand.coords}
-                                title={'test'}
-                                description={'desciption'}
+                                title={stand.name}
+                                description={stand.description}
                             />
                         )
                     })}
                 </MapView>
                 :
-                <Text>Select a search position</Text>
+                <Text>Sélectionnez une position pour chercher un stand</Text>
             }
         </View>
     )

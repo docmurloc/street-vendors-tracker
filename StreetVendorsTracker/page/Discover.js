@@ -45,7 +45,7 @@ export default function Discover({ navigation }) {
         <View
         style={styles.content}
         >
-            <SearchHeader />
+            <Text style={styles.text} >Nouveaux Marchands</Text>
             {standData ?
                 <>
                     <FlatList
@@ -64,7 +64,7 @@ export default function Discover({ navigation }) {
                     />
                 </>
                 :
-                <Text>Loading...</Text>
+                <Text>Chargement...</Text>
             }
         </View>
     )
@@ -72,8 +72,11 @@ export default function Discover({ navigation }) {
 
 const styles = StyleSheet.create({
     content: {
-        alignItems: 'center',
+        flex: 1,
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
     },
     imageStand: {
         width: 350,
@@ -84,4 +87,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#DDDDDD",
         padding: 10
     },
+    text : {
+        fontSize : 20,
+        padding : 20
+    }
 });

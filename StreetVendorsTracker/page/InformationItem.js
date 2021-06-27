@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { Title, FAB, Divider, Paragraph, Subheading } from 'react-native-paper';
 
 import firestore from '@react-native-firebase/firestore';
@@ -15,12 +15,12 @@ const defaultImage = { uri: 'https://firebasestorage.googleapis.com/v0/b/street-
 
 export default function InformationItem() {
 
-    const { name, description, price, image} = useItem();
+    const { name, description, price, image } = useItem();
 
 
     return (
-        <View
-            style={styles.container}
+        <ScrollView
+            contentContainerStyle={styles.container}
         >
             <Image
                 style={styles.imageStand}
@@ -35,7 +35,7 @@ export default function InformationItem() {
             <Subheading>Desciption : </Subheading>
             <Paragraph>{description}</Paragraph>
             <Divider style={styles.divider} />
-        </View>
+        </ScrollView>
     )
 }
 
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     imageStand: {
-        width: 350,
-        height: 200
+        width: 300,
+        height: 150
     },
     button: {
         alignItems: "center",
@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        padding: 5
+        backgroundColor: "rgba(255,232,225,1)",
+        alignItems: 'center',
+        paddingTop: 15
     },
     divider: {
         marginVertical: 5
