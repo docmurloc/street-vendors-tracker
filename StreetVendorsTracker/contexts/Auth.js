@@ -4,7 +4,9 @@ import auth from '@react-native-firebase/auth';
 
 import {
     GoogleSignin,
-} from '@react-native-google-signin/google-signin';  
+} from '@react-native-google-signin/google-signin';
+
+import { FIREBASE_CLIENT_KEY } from '@env';
 
 const authContext = createContext();
 
@@ -23,7 +25,7 @@ function useFirebaseAuth() {
 
     useEffect(() => {
         GoogleSignin.configure({
-            webClientId: '344872025261-d74vtdh3kq3sf4lioc6va7ldjagcqqsk.apps.googleusercontent.com',
+            webClientId: FIREBASE_CLIENT_KEY,
           });
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
         return subscriber;
