@@ -16,7 +16,9 @@ export default function SearchListe({ navigation }) {
     console.log(searchResult);
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <SearchHeader />
 
             {searchResult ?
@@ -56,5 +58,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#DDDDDD",
         padding: 10
+    },
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
     },
 });

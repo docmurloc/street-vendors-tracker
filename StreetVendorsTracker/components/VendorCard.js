@@ -17,11 +17,13 @@ export default function VendorCard({ data, onPress }) {
                 source={data.photo ? data.photo : defaultImage}
                 style={styles.imageStand}
             />
-                <Card.Title
-                    title={data.name}
-                    subtitle={data.address}
-                    subtitleNumberOfLines={2}
-                />
+            <Card.Title
+                title={data.name}
+                subtitle={data.address}
+                subtitleNumberOfLines={2}
+                subtitleStyle={styles.text}
+                titleStyle={styles.text}
+            />
         </Card>
     )
 }
@@ -34,10 +36,21 @@ const styles = StyleSheet.create({
     },
     card: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "rgba(146,213,230,1)",
+        shadowColor: "rgba(98,154,224,1)",
+        shadowOffset: {
+            height: 3,
+            width: 0
+        },
+        elevation: 9,
+        shadowOpacity: 1,
+        shadowRadius: 3,
         borderRadius: 30,
-        padding : 10 ,
+        padding: 10,
         marginTop: 5,
         width: '100%'
     },
+    text: {
+        color: 'rgba(228, 102, 64,1)'
+    }
 });

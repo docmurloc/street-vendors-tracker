@@ -4,7 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 
 import { useSearch } from '../contexts/Search';
 
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 
 import SearchHeader from '../components/SearchHeader';
 
@@ -13,11 +13,13 @@ export default function SearchMap() {
     const { searchPosition, searchResult, updateSearchPosition } = useSearch();
 
     return (
-        <View>
+        <View
+            style={styles.container}
+        >
             <SearchHeader />
             {searchPosition ?
                 <MapView
-                    style={{ height: 500, width: 350 }}
+                    style={{ height: '90%', width: 350 }}
                     initialRegion={{
                         ...searchPosition,
                         latitudeDelta: 0.05,
@@ -45,3 +47,17 @@ export default function SearchMap() {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    imageItem: {
+        width: 300,
+        height: 150
+    },
+    container: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
+    },
+});

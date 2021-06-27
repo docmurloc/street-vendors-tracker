@@ -41,6 +41,7 @@ export default function SearchHeader() {
                 contentStyle={styles.buttonAddress}
                 icon="map-marker"
                 mode="contained"
+                color="rgba(98,154,224,1)"
                 onPress={() => setModalVisible(!modalVisible)}
             >
                 <Text
@@ -60,66 +61,64 @@ export default function SearchHeader() {
                     setModalVisible(!modalVisible);
                 }}
             >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        {position || searchPosition ?
-                            <>
-                                <MapView
-                                    style={{ height: 500, width: 350 }}
-                                    initialRegion={{
-                                        ...positionMarker,
-                                        latitudeDelta: 0.05,
-                                        longitudeDelta: 0.05
-                                    }}
-                                    onRegionChangeComplete={(region) => {
-                                        console.log('region =', region);
-                                        ref.current?.animateMarkerToCoordinate({
-                                            ...region,
-                                            duration: 0
-                                        });
-                                        setSelectedPosition(region);
-                                    }}
-                                >
-                                    <Marker
-                                        ref={ref}
-                                        coordinate={positionMarker}
-                                        title={'test'}
-                                        description={'desciption'}
-                                    />
-                                </MapView>
-                            </>
-                            :
-                            <>
-                                <Text>loading...</Text>
-                            </>
-                        }
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
-                            <Text style={styles.textStyle}>close</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {
-                                updateSearchPosition(position?.coords, 5000, true);
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
-                            <Text style={styles.textStyle}>Use user position</Text>
-                        </Pressable>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => {
-                                updateSearchPosition(selectedPosition, 5000, false);
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
-                            <Text style={styles.textStyle}>Select this position</Text>
-                        </Pressable>
-                    </View>
+                <View style={styles.modalView}>
+                    {position || searchPosition ?
+                        <>
+                            <MapView
+                                style={{ height: "70%", width: 360 }}
+                                initialRegion={{
+                                    ...positionMarker,
+                                    latitudeDelta: 0.05,
+                                    longitudeDelta: 0.05
+                                }}
+                                onRegionChangeComplete={(region) => {
+                                    console.log('region =', region);
+                                    ref.current?.animateMarkerToCoordinate({
+                                        ...region,
+                                        duration: 0
+                                    });
+                                    setSelectedPosition(region);
+                                }}
+                            >
+                                <Marker
+                                    ref={ref}
+                                    coordinate={positionMarker}
+                                    title={'Position Sélectionné'}
+                                    description={'La position qui sera utilisée pour chercher les stands'}
+                                />
+                            </MapView>
+                        </>
+                        :
+                        <>
+                            <Text>loading...</Text>
+                        </>
+                    }
+                    <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => {
+                            setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <Text style={styles.textStyle}>Fermer</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => {
+                            updateSearchPosition(position?.coords, 5000, true);
+                            setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <Text style={styles.textStyle}>Utiliser la position de l'utilisateur</Text>
+                    </Pressable>
+                    <Pressable
+                        style={[styles.button, styles.buttonClose]}
+                        onPress={() => {
+                            updateSearchPosition(selectedPosition, 5000, false);
+                            setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <Text style={styles.textStyle}>Utiliser cette position</Text>
+                    </Pressable>
                 </View>
             </Modal>
         </View>
@@ -131,32 +130,34 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 22,
+        backgroundColor: 'red'
     },
     container: {
         width: '100%'
     },
-    buttonAddress: {
-    },
     modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
+        height: '100%',
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: "rgba(255,232,225,1)"
+
     },
     button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2
+        backgroundColor: "rgba(98,154,224,1)",
+        shadowColor: "rgba(146,213,230,1)",
+        shadowOffset: {
+            height: 2,
+            width: 2
+        },
+        elevation: 9,
+        shadowOpacity: 1,
+        shadowRadius: 3,
+        width: "50%"
     },
     textStyle: {
         color: "white",
