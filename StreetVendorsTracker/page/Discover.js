@@ -17,6 +17,7 @@ export default function Discover({ navigation }) {
     useEffect(() => {
         const subscriber = firestore()
             .collection('Stands')
+            .where('show', '==', true)
             .onSnapshot(querySnapshot => {
 
                 let itemsBuffer = []

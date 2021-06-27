@@ -148,6 +148,21 @@ function useStandData() {
             });
     }
 
+    const updateStandVisibility = async (visibility) => {
+
+        firestore()
+            .collection('Stands')
+            .doc(user.providerData[0].uid)
+            .set({
+                uid: user.providerData[0].uid,
+                show : visibility
+            }, { merge: true })
+            .then(() => {
+                console.log('Stand visibility updated!');
+
+            });
+    }
+
     const updateStandTimeTable = (day, value) => {
 
 
@@ -280,6 +295,7 @@ function useStandData() {
         updateStandTimeTable,
         updateItem,
         deleteItem,
-        setSelectedStand
+        setSelectedStand,
+        updateStandVisibility
     };
 }

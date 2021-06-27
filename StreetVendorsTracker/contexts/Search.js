@@ -27,6 +27,7 @@ function useSearchInfo() {
         if (searchPosition && radius) {
             const subscriber = firestore()
                 .collection('Stands')
+                .where('show', '==', true)
                 .onSnapshot(querySnapshot => {
 
                     let itemsBuffer = []
