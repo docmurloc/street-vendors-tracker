@@ -30,7 +30,6 @@ export default function ChangeItem({navigation}) {
     const handleChooseImage = () => {
 
         ImagePicker.openPicker(optionCrop).then(photo => {
-            console.log(photo);
             setImage({ uri: photo.path});
         });
     };

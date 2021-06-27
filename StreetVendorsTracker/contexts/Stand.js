@@ -36,8 +36,6 @@ function useStandData() {
 
                     const dataStand = documentSnapshot.data();
 
-                    console.log('stand data: ', dataStand);
-
                     setStandData(dataStand)
                 });
 
@@ -56,14 +54,13 @@ function useStandData() {
 
                     let itemsBuffer = []
 
-                    querySnapshot.forEach(function (doc) {
+                    querySnapshot?.forEach(function (doc) {
                         itemsBuffer.push({
                             ...doc.data(),
                             id: doc.id
                         });
                     });
 
-                    console.log('stand items array : ', itemsBuffer);
                     setItems(itemsBuffer);
                 });
 
@@ -80,10 +77,6 @@ function useStandData() {
                 uid: user.providerData[0].uid,
                 name
             }, { merge: true })
-            .then(() => {
-                console.log('Stand name updated!');
-
-            });
     }
 
     const updateStandLink = (link) => {
@@ -94,10 +87,6 @@ function useStandData() {
                 uid: user.providerData[0].uid,
                 link
             }, { merge: true })
-            .then(() => {
-                console.log('Stand link updated!');
-
-            });
     }
 
     const updateStandDescription = (description) => {
@@ -108,10 +97,6 @@ function useStandData() {
                 uid: user.providerData[0].uid,
                 description
             }, { merge: true })
-            .then(() => {
-                console.log('Stand description updated!');
-
-            });
     }
 
     const updateStandPhone = (phone) => {
@@ -122,17 +107,12 @@ function useStandData() {
                 uid: user.providerData[0].uid,
                 phone
             }, { merge: true })
-            .then(() => {
-                console.log('Stand phone updated!');
-
-            });
     }
 
     const updateStandCoords = async (coords) => {
 
         const json = await Geocoder.from(coords);
         var addressComponent = json.results[0].formatted_address;
-        console.log('adress stand : ', addressComponent);
 
         firestore()
             .collection('Stands')
@@ -142,10 +122,6 @@ function useStandData() {
                 address: addressComponent,
                 coords
             }, { merge: true })
-            .then(() => {
-                console.log('Stand coords updated!');
-
-            });
     }
 
     const updateStandVisibility = async (visibility) => {
@@ -157,10 +133,6 @@ function useStandData() {
                 uid: user.providerData[0].uid,
                 show : visibility
             }, { merge: true })
-            .then(() => {
-                console.log('Stand visibility updated!');
-
-            });
     }
 
     const updateStandTimeTable = (day, value) => {
@@ -179,15 +151,9 @@ function useStandData() {
             .collection('TimeTable')
             .doc(user.providerData[0].uid)
             .set(data, { merge: true })
-            .then(() => {
-                console.log('Stand timetable updated!');
-
-            });
     }
 
     const updateStandPhoto = async (photoData) => {
-
-        console.log("photo data = ", photoData);
 
         const reference = storage().ref(`Stands/${user.providerData[0].uid}/StandImage.jpg`);
 
@@ -196,23 +162,18 @@ function useStandData() {
 
         const url = await reference.getDownloadURL();
 
-        console.log("image uploaded url = ", url);
-
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
             .set({
+                uid: user.providerData[0].uid,
                 photo: {
                     uri: url
                 },
             }, { merge: true })
-            .then(() => {
-                console.log('Image user stand upload');
-            });
     }
 
     const createItem = async (name, description, price, photoData) => {
-        console.log("photo data = ", photoData);
 
         const reference = storage().ref(`Items/${user.providerData[0].uid}/${photoData.fileName}`);
 
@@ -220,8 +181,6 @@ function useStandData() {
 
 
         const url = await reference.getDownloadURL();
-
-        console.log("image uploaded url = ", url);
 
         firestore()
             .collection('Items')
@@ -234,15 +193,9 @@ function useStandData() {
                 },
                 uid: user.providerData[0].uid
             })
-            .then(() => {
-                console.log('Image user stand upload');
-            });
     }
 
     const updateItem = async (item, name, description, price, photo) => {
-        console.log('item ');
-        console.log( item);
-        console.log(name, description, price, photo);
 
         const data = {
             description,
@@ -266,14 +219,9 @@ function useStandData() {
             .collection('Items')
             .doc(item.id)
             .set(data, { merge: true })
-            .then(() => {
-                console.log('Item stand updated!');
-
-            });
     }
 
     const deleteItem = async (item) => {
-        console.log('item ');
 
         firestore()
             .collection('Items')

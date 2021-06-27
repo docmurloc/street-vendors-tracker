@@ -20,12 +20,6 @@ function usePositionData() {
   const [hasLocationPermission, setHasLocationPermission] = useState(false);
   const [isTracking, setIsTracking] = useState(null);
 
-
-  useEffect(async () => {
-    console.log("position : ", position);
-
-  }, [position]);
-
   const askLocationPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
@@ -41,12 +35,10 @@ function usePositionData() {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("You can use the position");
         setHasLocationPermission(true);
-        getCurrentPosition();
+        await getCurrentPosition();
         return true;
       } else {
-        console.log("Position permission denied");
         setHasLocationPermission(false);
         return false;
       }
@@ -57,10 +49,8 @@ function usePositionData() {
   }
 
   const getCurrentPosition = async () => {
-    if (hasLocationPermission) {
       Geolocation.getCurrentPosition(
         (userPosition) => {
-          console.log(userPosition);
           setPosition(userPosition);
         },
         (error) => {
@@ -68,7 +58,6 @@ function usePositionData() {
         },
         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
       );
-    }
   }
 
   const setUserPosition = (data) => {
@@ -79,7 +68,6 @@ function usePositionData() {
     if (hasLocationPermission && isTracking == null) {
       const id = Geolocation.watchPosition(
         (userPosition) => {
-          console.log("user position update", userPosition);
           setPosition(userPosition);
         },
         (error) => {
@@ -94,7 +82,6 @@ function usePositionData() {
 
   const unTrackUser = () => {
     if (isTracking != null) {
-      console.log("untrack user");
       Geolocation.clearWatch(isTracking);
       setIsTracking(null);
     }

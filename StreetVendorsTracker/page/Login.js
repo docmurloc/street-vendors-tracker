@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -10,15 +10,7 @@ import { useAuth } from '../contexts/Auth';
 
 export default function Login() {
 
-    const { user, loading, SignInWithGoogle } = useAuth();
-
-    useEffect(() => {
-        console.log("user: ", user);
-    }, [user])
-
-    useEffect(() => {
-        console.log("loading: ", loading);
-    }, [loading])
+    const { loading, SignInWithGoogle } = useAuth();
 
     return (
         <View
@@ -46,7 +38,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         padding: 20,
-        textAlign : 'center',
+        textAlign: 'center',
         backgroundColor: "rgba(146,213,230,1)",
         shadowColor: "rgba(98,154,224,1)",
         shadowOffset: {
@@ -56,7 +48,7 @@ const styles = StyleSheet.create({
         elevation: 9,
         shadowOpacity: 1,
         shadowRadius: 3,
-        color : 'rgba(228, 102, 64,1)',
+        color: 'rgba(228, 102, 64,1)',
         borderRadius: 25
     }
 });

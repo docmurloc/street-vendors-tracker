@@ -6,8 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ButtonSetting({ title, value, onPress }) {
 
-    console.log("button setting ", title, value);
-
     return (
         <TouchableOpacity
             style={styles.button}

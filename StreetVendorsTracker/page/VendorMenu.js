@@ -41,7 +41,6 @@ export default function VendorMenu({ navigation }) {
                         });
                     });
 
-                    console.log('stand items array : ', itemsBuffer);
                     setItems(itemsBuffer);
                 });
 
@@ -65,7 +64,6 @@ export default function VendorMenu({ navigation }) {
                             return (
                                 <>
                                     <ItemCard data={item} onPress={() => {
-                                        console.log("press");
                                         setSelectedItem(item);
                                         navigation.navigate('Change item');
                                     }} />

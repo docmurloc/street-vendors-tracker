@@ -31,7 +31,6 @@ export default function Discover({ navigation }) {
 
                 });
 
-                console.log('stand info discover array : ', itemsBuffer);
                 setStandData(itemsBuffer);
             });
 
@@ -52,7 +51,6 @@ export default function Discover({ navigation }) {
                             return (
 
                                 <VendorCard data={item} onPress={() => {
-                                    console.log("press");
                                     setSelectedStand(item);
                                     navigation.navigate('Information', item);
                                 }} />

@@ -34,18 +34,17 @@ function useSearchInfo() {
 
                     querySnapshot.forEach(function (doc) {
 
-                        const data = doc.data();
+                        //const data = doc.data();
 
-                        if (calculateDistance(searchPosition, data.coords) <= radius) {
+                        //if (calculateDistance(searchPosition, data.coords) <= radius) {
                             itemsBuffer.push({
                                 ...doc.data(),
                                 id: doc.id
                             });
-                        }
+                        //}
 
                     });
 
-                    console.log('stand info array : ', itemsBuffer);
                     setSearchResult(itemsBuffer);
                 });
 
@@ -57,11 +56,8 @@ function useSearchInfo() {
 
     const updateSearchPosition = async (coords, radiusSetting, user) => {
 
-        console.log("update search position ", coords, radiusSetting, user);
-
         const json = await Geocoder.from(coords);
         var addressComponent = json.results[0].formatted_address;
-        console.log('adress search root : ', addressComponent);
 
         setRadius(radiusSetting);
         setSearchPosition(coords);

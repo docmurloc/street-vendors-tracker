@@ -16,7 +16,7 @@ export default function SearchHeader() {
 
 
 
-    const { position, askLocationPermission } = usePosition();
+    const { position, askLocationPermission, hasLocationPermission } = usePosition();
 
     const { searchPosition, updateSearchPosition, addressPosition } = useSearch();
 
@@ -61,7 +61,7 @@ export default function SearchHeader() {
                 }}
             >
                 <View style={styles.modalView}>
-                    {position || searchPosition ?
+                    {(position || searchPosition) && hasLocationPermission ?
                         <>
                             <MapView
                                 style={{ height: "70%", width: 360 }}
@@ -71,7 +71,6 @@ export default function SearchHeader() {
                                     longitudeDelta: 0.05
                                 }}
                                 onRegionChangeComplete={(region) => {
-                                    console.log('region =', region);
                                     ref.current?.animateMarkerToCoordinate({
                                         ...region,
                                         duration: 0

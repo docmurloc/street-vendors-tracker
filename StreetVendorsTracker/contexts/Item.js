@@ -22,7 +22,6 @@ function useItemInformation() {
 
     useEffect(() => {
         if (selectedItem) {
-            console.log('item selected ', selectedItem);
             setName(selectedItem.name);
             setDescription(selectedItem.description);
             setPrice(selectedItem.price);

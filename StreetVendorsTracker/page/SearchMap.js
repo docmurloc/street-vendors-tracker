@@ -26,7 +26,6 @@ export default function SearchMap() {
                         longitudeDelta: 0.05
                     }}
                     onRegionChangeComplete={(region) => {
-                        console.log('region =', region);
                         updateSearchPosition(region, 5000, false);
                     }}
                 >

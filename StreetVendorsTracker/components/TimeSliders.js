@@ -31,19 +31,18 @@ export default function TimeSlider({ day, handleValue }) {
                 .doc(user.providerData[0].uid)
                 .get();
 
-            console.log('timeTable data: ', timeTable.data());
-
             let data = [0, 23]
 
-            data[0] = timeTable.data()[day]?.from ? timeTable.data()[day].from : 0;
-            data[1] = timeTable.data()[day]?.to ? timeTable.data()[day].to : 24;
+            if (timeTable.data()) {
+                data[0] = timeTable.data()[day]?.from ? timeTable.data()[day].from : 0;
+                data[1] = timeTable.data()[day]?.to ? timeTable.data()[day].to : 24;    
+            }
             setSelected(data)
 
         }
     }, [user])
 
     useEffect(() => {
-        console.log(`${day} from ${selected[0]} to ${selected[1]}`)
         if (handleValue) {
             handleValue(day, selected);
         }

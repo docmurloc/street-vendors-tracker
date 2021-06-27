@@ -13,8 +13,6 @@ export default function SearchListe({ navigation }) {
 
     const { searchResult } = useSearch();
 
-    console.log(searchResult);
-
     return (
         <View
             style={styles.container}
@@ -29,7 +27,6 @@ export default function SearchListe({ navigation }) {
                             return (
 
                                 <VendorCard data={item} onPress={() => {
-                                    console.log("press");
                                     navigation.navigate('Information', item);
                                 }} />
                             )

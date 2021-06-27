@@ -28,8 +28,6 @@ export default function VendorInformation({ navigation }) {
 
                     const dataTimeTable = documentSnapshot.data();
 
-                    console.log('stand data timzeTable: ', dataTimeTable);
-
                     setTime(dataTimeTable)
                 });
 
@@ -37,8 +35,6 @@ export default function VendorInformation({ navigation }) {
             return () => subscriber();
         }
     }, [selectedStand?.uid]);
-
-    console.log("time ", time, currentDay);
 
     return (
         <ScrollView

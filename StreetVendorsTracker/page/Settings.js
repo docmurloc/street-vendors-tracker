@@ -38,7 +38,7 @@ export default function Settings({ navigation }) {
                 />}
             <Button
                 title="Déconnexion"
-                color="rgba(98,154,224,1)"
+                color='rgb(228, 102, 64)'
                 onPress={() => SignOut()}
             />
         </View>

@@ -12,8 +12,6 @@ import { GOOGLE_API_KEY } from '@env';
 
 import { Provider as PaperProvider } from 'react-native-paper';
 
-console.log("env key ", GOOGLE_API_KEY);
-
 Geocoder.init(GOOGLE_API_KEY);
 
 import React from 'react';

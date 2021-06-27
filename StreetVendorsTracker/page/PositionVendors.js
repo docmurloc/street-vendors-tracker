@@ -12,7 +12,7 @@ export default function PositionVendors({ navigation }) {
 
     const { standData, updateStandCoords } = useStand();
 
-    const { position, askLocationPermission } = usePosition();
+    const { position, askLocationPermission, hasLocationPermission } = usePosition();
 
     useEffect(() => {
         askLocationPermission();
@@ -31,7 +31,7 @@ export default function PositionVendors({ navigation }) {
         <View
             style={styles.container}
         >
-            {position || standData.coords ?
+            {(position || standData?.coords) && hasLocationPermission ?
                 <>
                     <MapView
                         style={{ height: 500, width: 350 }}
@@ -41,7 +41,6 @@ export default function PositionVendors({ navigation }) {
                             longitudeDelta: 0.05
                         }}
                         onRegionChangeComplete={(region) => {
-                            console.log('region =', region);
                             ref.current?.animateMarkerToCoordinate({
                                 ...region,
                                 duration: 0
@@ -67,7 +66,7 @@ export default function PositionVendors({ navigation }) {
                 </>
                 :
                 <>
-                    <Text>loading...</Text>
+                    <Text>Chargement...</Text>
                 </>
             }
 
