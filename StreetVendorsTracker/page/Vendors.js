@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import { IconButton } from 'react-native-paper';
 
