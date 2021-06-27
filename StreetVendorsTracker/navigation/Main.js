@@ -45,24 +45,24 @@ export default function Main() {
         >
             {user ? (
                 <>
-                    <Stack.Screen name="Home" component={HomeNavigation} />
-                    <Stack.Screen name="Vendors" component={Vendor} />
-                    <Stack.Screen name="Information" component={Information} />
-                    <Stack.Screen name="Position vendors" component={PositionVendorsPage} />
-                    <Stack.Screen name="Create item" component={CreateItemsPage} />
-                    <Stack.Screen name="Change item" component={ChangeItem} />
-                    <Stack.Screen name="Setting name" component={SettingName} />
-                    <Stack.Screen name="Setting description" component={SettingDescription} />
-                    <Stack.Screen name="Setting phone" component={SettingPhone} />
-                    <Stack.Screen name="Setting item name" component={SettingItemName} />
-                    <Stack.Screen name="Setting item description" component={SettingItemDescription} />
-                    <Stack.Screen name="Setting item price" component={SettingItemPrice} />
-                    <Stack.Screen name="Information item" component={InformationItem} />
+                    <Stack.Screen name="Home" options={{ title: 'Home' }}  component={HomeNavigation} />
+                    <Stack.Screen name="Vendors" options={{ title: 'Description du stand' }}  component={Vendor} />
+                    <Stack.Screen name="Information" options={{ title: 'Information sur le stand' }} component={Information} />
+                    <Stack.Screen name="Position vendors" options={{ title: 'Position du stand' }} component={PositionVendorsPage} />
+                    <Stack.Screen name="Create item" options={{ title: 'Objet création' }} component={CreateItemsPage} />
+                    <Stack.Screen name="Change item" options={{ title: 'Objet édition' }} component={ChangeItem} />
+                    <Stack.Screen name="Setting name" options={{ title: 'Nom du stand' }} component={SettingName} />
+                    <Stack.Screen name="Setting description" options={{ title: 'Description du stand' }} component={SettingDescription} />
+                    <Stack.Screen name="Setting phone" options={{ title: 'Numéro du stand' }} component={SettingPhone} />
+                    <Stack.Screen name="Setting item name" options={{ title: "Nom de l'objet" }} component={SettingItemName} />
+                    <Stack.Screen name="Setting item description" options={{ title: "Description de l'objet" }} component={SettingItemDescription} />
+                    <Stack.Screen name="Setting item price" options={{ title: "Prix de l'objet" }} component={SettingItemPrice} />
+                    <Stack.Screen name="Information item" options={{ title: "Description de l'objet" }} component={InformationItem} />
 
                 </>
             ) : (
                 <>
-                    <Stack.Screen name="Login" component={LoginPage} />
+                    <Stack.Screen name="Login" options={{ title: 'Connexion' }}  component={LoginPage} />
                 </>
             )}
         </Stack.Navigator>
