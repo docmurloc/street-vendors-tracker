@@ -43,15 +43,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: "rgba(255,232,225,1)"
     },
-    imageStand: {
-        width: 350,
-        height: 200
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
-    },
     text: {
         fontSize: 20,
         padding: 20,

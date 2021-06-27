@@ -30,7 +30,6 @@ export default function Vendors({ navigation }) {
 
     const handleChooseImage = () => {
         ImagePicker.openPicker(optionCrop).then(image => {
-            console.log(image);
             updateStandPhoto(image);
         });
     }
@@ -76,20 +75,10 @@ export default function Vendors({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-    },
     imageStand: {
         width: 315,
         height: 185,
         borderRadius: 20
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
     },
     container: {
         flex: 1,

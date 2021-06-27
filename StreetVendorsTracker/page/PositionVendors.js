@@ -76,20 +76,6 @@ export default function PositionVendors({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-    },
-    imageStand: {
-        width: 350,
-        height: 200
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
-    },
     container: {
         flex: 1,
         display: 'flex',

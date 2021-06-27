@@ -125,13 +125,6 @@ export default function SearchHeader() {
 }
 
 const styles = StyleSheet.create({
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22,
-        backgroundColor: 'red'
-    },
     container: {
         width: '100%'
     },
@@ -163,8 +156,4 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center"
     },
-    modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-    }
 });

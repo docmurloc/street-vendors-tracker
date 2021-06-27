@@ -4,9 +4,6 @@ import { PermissionsAndroid } from "react-native";
 
 import Geolocation from 'react-native-geolocation-service';
 
-import Geocoder from 'react-native-geocoding';
-
-
 const authContext = createContext();
 
 export function PositionProvider({ children }) {

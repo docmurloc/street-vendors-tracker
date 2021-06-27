@@ -74,7 +74,7 @@ export default function VendorMenu({ navigation }) {
                     />
                 </>
                 :
-                <Text>loading...</Text>
+                <Text>Chargement...</Text>
             }
             <FAB
                 style={styles.fab}
@@ -93,15 +93,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         flex: 1
-    },
-    imageStand: {
-        width: 350,
-        height: 200
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
     },
     fab: {
         position: 'absolute',

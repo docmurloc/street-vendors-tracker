@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import MapView, { Marker } from "react-native-maps";
 
@@ -49,10 +49,6 @@ export default function SearchMap() {
 }
 
 const styles = StyleSheet.create({
-    imageItem: {
-        width: 300,
-        height: 150
-    },
     container: {
         flex: 1,
         display: 'flex',

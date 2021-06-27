@@ -3,9 +3,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeNavigation from './Home';
-import ProfilePage from '../page/Profile';
 import PositionVendorsPage from '../page/PositionVendors';
-import VendorItemsPage from '../page/VendorItems';
 import CreateItemsPage from '../page/CreateItem';
 import ChangeItem from '../page/ChangeItem';
 import SettingName from '../page/SettingName';
@@ -48,11 +46,9 @@ export default function Main() {
             {user ? (
                 <>
                     <Stack.Screen name="Home" component={HomeNavigation} />
-                    <Stack.Screen name="Profile" component={ProfilePage} />
                     <Stack.Screen name="Vendors" component={Vendor} />
                     <Stack.Screen name="Information" component={Information} />
                     <Stack.Screen name="Position vendors" component={PositionVendorsPage} />
-                    <Stack.Screen name="Items vendor" component={VendorItemsPage} />
                     <Stack.Screen name="Create item" component={CreateItemsPage} />
                     <Stack.Screen name="Change item" component={ChangeItem} />
                     <Stack.Screen name="Setting name" component={SettingName} />

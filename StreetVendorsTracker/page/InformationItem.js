@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { Title, FAB, Divider, Paragraph, Subheading } from 'react-native-paper';
+import { Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { Title, Divider, Paragraph, Subheading } from 'react-native-paper';
 
-import firestore from '@react-native-firebase/firestore';
 
-import { useStand } from '../contexts/Stand';
 import { useItem } from '../contexts/Item'
 
 
@@ -40,25 +38,9 @@ export default function InformationItem() {
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-    },
     imageStand: {
         width: 300,
         height: 150
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
-    },
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
     },
     container: {
         display: 'flex',

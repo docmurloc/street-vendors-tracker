@@ -6,9 +6,6 @@ import firestore from '@react-native-firebase/firestore';
 
 import VendorCard from '../components/VendorCard';
 
-import SearchHeader from '../components/SearchHeader';
-
-
 import { useStand } from '../contexts/Stand';
 
 export default function Discover({ navigation }) {
@@ -77,15 +74,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
         backgroundColor: "rgba(255,232,225,1)"
-    },
-    imageStand: {
-        width: 350,
-        height: 200
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
     },
     text : {
         fontSize : 20,

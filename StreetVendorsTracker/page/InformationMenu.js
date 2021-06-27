@@ -72,7 +72,7 @@ export default function InformationMenu({ navigation }) {
                     />
                 </>
                 :
-                <Text>loading...</Text>
+                <Text>Chargement...</Text>
             }
         </View>
     )
@@ -85,20 +85,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         backgroundColor: "rgba(255,232,225,1)"
-    },
-    imageStand: {
-        width: 350,
-        height: 200
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#DDDDDD",
-        padding: 10
-    },
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
     },
 });
