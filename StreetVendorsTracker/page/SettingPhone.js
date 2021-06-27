@@ -12,7 +12,7 @@ export default function SettingPhone() {
         updateStandPhone,
     } = useStand();
 
-    const [phone, setPhone] = useState(standData?.phone);
+    const [phone, setPhone] = useState(standData?.phone ? standData?.phone : '');
 
     useEffect(() => {
         updateStandPhone(phone);

@@ -41,7 +41,7 @@ export default function Vendors({ navigation }) {
 
             <ImageBackground
                 style={styles.imageStand}
-                source={standData.photo ? standData.photo : defaultImage}
+                source={standData?.photo ? standData?.photo : defaultImage}
             >
                 <IconButton
                     icon="camera"

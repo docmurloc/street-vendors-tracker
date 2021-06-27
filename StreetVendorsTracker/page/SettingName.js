@@ -12,7 +12,7 @@ export default function SettingName() {
         updateStandName,
     } = useStand();
 
-    const [name, setname] = useState(standData?.name);
+    const [name, setname] = useState(standData?.name ? standData?.name : '' );
 
     useEffect(() => {
         updateStandName(name);

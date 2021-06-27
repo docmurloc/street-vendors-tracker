@@ -11,7 +11,7 @@ export default function SettingItemDescription() {
         setDescription,
     } = useItem();
 
-    const [buffer, setBuffer] = useState(description);
+    const [buffer, setBuffer] = useState(description ? description : '');
 
     useEffect(() => {
         setDescription(buffer);

@@ -26,27 +26,29 @@ export default function VendorMenu({ navigation }) {
     } = useItem()
 
     useEffect(() => {
-        const subscriber = firestore()
-            .collection('Items')
-            .where('uid', '==', standData?.uid)
-            .onSnapshot(querySnapshot => {
+        if (standData) {
+            const subscriber = firestore()
+                .collection('Items')
+                .where('uid', '==', standData?.uid)
+                .onSnapshot(querySnapshot => {
 
-                let itemsBuffer = []
+                    let itemsBuffer = []
 
-                querySnapshot.forEach(function (doc) {
-                    itemsBuffer.push({
-                        ...doc.data(),
-                        id: doc.id
+                    querySnapshot.forEach(function (doc) {
+                        itemsBuffer.push({
+                            ...doc.data(),
+                            id: doc.id
+                        });
                     });
+
+                    console.log('stand items array : ', itemsBuffer);
+                    setItems(itemsBuffer);
                 });
 
-                console.log('stand items array : ', itemsBuffer);
-                setItems(itemsBuffer);
-            });
-
-        // Stop listening for updates when no longer required
-        return () => subscriber();
-    }, []);
+            // Stop listening for updates when no longer required
+            return () => subscriber();
+        }
+    }, [standData]);
 
 
 

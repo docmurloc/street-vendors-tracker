@@ -12,7 +12,7 @@ export default function SettingDescription() {
         updateStandDescription,
     } = useStand();
 
-    const [description, setDescription] = useState(standData?.description);
+    const [description, setDescription] = useState(standData?.description ? standData?.description : '');
 
     useEffect(() => {
         updateStandDescription(description);

@@ -48,7 +48,7 @@ function useStandData() {
 
 
     useEffect(() => {
-        if (user) {
+        if (user && standData) {
             const subscriber = firestore()
                 .collection('Items')
                 .where('uid', '==', user.providerData[0].uid)
@@ -70,16 +70,16 @@ function useStandData() {
             // Stop listening for updates when no longer required
             return () => subscriber();
         }
-    }, [user]);
+    }, [user, standData]);
 
     const updateStandName = (name) => {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 uid: user.providerData[0].uid,
                 name
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Stand name updated!');
 
@@ -90,10 +90,10 @@ function useStandData() {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 uid: user.providerData[0].uid,
                 link
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Stand link updated!');
 
@@ -104,10 +104,10 @@ function useStandData() {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 uid: user.providerData[0].uid,
                 description
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Stand description updated!');
 
@@ -118,10 +118,10 @@ function useStandData() {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 uid: user.providerData[0].uid,
                 phone
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Stand phone updated!');
 
@@ -137,11 +137,11 @@ function useStandData() {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 uid: user.providerData[0].uid,
                 address: addressComponent,
                 coords
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Stand coords updated!');
 
@@ -186,11 +186,11 @@ function useStandData() {
         firestore()
             .collection('Stands')
             .doc(user.providerData[0].uid)
-            .update({
+            .set({
                 photo: {
                     uri: url
                 },
-            })
+            }, { merge: true })
             .then(() => {
                 console.log('Image user stand upload');
             });
