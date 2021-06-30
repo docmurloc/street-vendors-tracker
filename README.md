@@ -3,13 +3,13 @@ Street vendors tracker est une application mobile permettant de suivre le commer
 
 # APK
 
-![Apk android](https://github.com/docmurloc/street-vendors-tracker/raw/main/StreetVendorsTracker/apk/app-release.apk)
+![Apk android](https://github.com/docmurloc/street-vendors-tracker/raw/main/StreetVendorsTracker/apk/street-vendor-tracker.apk)
 
 # Screens
 
 
-![Home](/source/home.png)
-![information objet](/source/information_objet.png)
-![information stand](/source/information_stand.png)
-![map](/source/map.png)
-![stand setting](/source/stand_settings.png)
+![Home](/source/home2.png)
+![information objet](/source/information_objet2.png)
+![information stand](/source/information_stand2.png)
+![map](/source/map2.png)
+![stand setting](/source/stand_settings2.png)
