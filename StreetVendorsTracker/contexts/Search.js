@@ -34,14 +34,14 @@ function useSearchInfo() {
 
                     querySnapshot.forEach(function (doc) {
 
-                        //const data = doc.data();
+                        const data = doc.data();
 
-                        //if (calculateDistance(searchPosition, data.coords) <= radius) {
+                        if (calculateDistance(searchPosition, data.coords) <= radius) {
                             itemsBuffer.push({
                                 ...doc.data(),
                                 id: doc.id
                             });
-                        //}
+                        }
 
                     });
 

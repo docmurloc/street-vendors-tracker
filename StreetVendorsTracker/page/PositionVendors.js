@@ -57,7 +57,7 @@ export default function PositionVendors({ navigation }) {
                     </MapView>
                     <Button
                         title="Valider la position"
-                        color="rgba(98,154,224,1)"
+                        color="rgba(46,97,77,1)"
                         onPress={() => {
                             updateStandCoords(positionSelected);
                             navigation.goBack();
@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
     },
 });

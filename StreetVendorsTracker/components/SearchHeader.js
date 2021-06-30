@@ -18,7 +18,7 @@ export default function SearchHeader() {
 
     const { position, askLocationPermission, hasLocationPermission } = usePosition();
 
-    const { searchPosition, updateSearchPosition, addressPosition } = useSearch();
+    const { searchPosition, updateSearchPosition, addressPosition, searchResult } = useSearch();
 
     const [selectedPosition, setSelectedPosition] = useState(searchPosition);
 
@@ -41,13 +41,13 @@ export default function SearchHeader() {
                 contentStyle={styles.buttonAddress}
                 icon="map-marker"
                 mode="contained"
-                color="rgba(98,154,224,1)"
+                color="rgba(214,243,172,1)"
                 onPress={() => setModalVisible(!modalVisible)}
             >
                 <Text
                     numberOfLines={2}
                 >
-                    {addressPosition}
+                    {searchResult ? addressPosition : 'Sélectionner une position'}
 
                 </Text>
             </Button>
@@ -133,14 +133,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
 
     },
     button: {
         borderRadius: 20,
         padding: 10,
-        backgroundColor: "rgba(98,154,224,1)",
-        shadowColor: "rgba(146,213,230,1)",
+        backgroundColor: "rgba(214,243,172,1)",
+        shadowColor: "rgba(190,202,173,1)",
         shadowOffset: {
             height: 2,
             width: 2
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         width: "50%"
     },
     textStyle: {
-        color: "white",
+        color: "rgba(46,97,77,1)",
         fontWeight: "bold",
         textAlign: "center"
     },

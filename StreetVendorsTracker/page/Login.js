@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238 ,1)"
     },
     text: {
         fontSize: 20,
         padding: 20,
         textAlign: 'center',
-        backgroundColor: "rgba(146,213,230,1)",
-        shadowColor: "rgba(98,154,224,1)",
+        backgroundColor: "rgba(214,243,172,1)",
+        shadowColor: "rgba(190,202,173,1)",
         shadowOffset: {
             height: 3,
             width: 0
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         elevation: 9,
         shadowOpacity: 1,
         shadowRadius: 3,
-        color: 'rgba(228, 102, 64,1)',
+        color: 'black',
         borderRadius: 25
     }
 });

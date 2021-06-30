@@ -40,22 +40,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
     },
     input: {
-        backgroundColor: "rgba(146,213,230,1)",
-        shadowColor: "rgba(98,154,224,1)",
+        backgroundColor: "rgba(214,243,172,1)",
+        shadowColor: "rgba(190,202,173,1)",
         shadowOffset: {
             height: 2,
             width: 0
         },
         elevation: 9,
         margin: 10,
-        color: 'rgba(228, 102, 64,1)',
+        color: 'black',
         shadowOpacity: 1,
     },
-    text: {
-        color: "rgba(136,184,50,1)",
+    text : {
         fontSize: 20
     }
 });

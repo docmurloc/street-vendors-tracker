@@ -16,10 +16,10 @@ export default function Home() {
     return (
         <Tab.Navigator
             tabBarOptions={{
-                activeTintColor: 'rgb(228, 102, 64)',
-                inactiveTintColor: 'rgb(146, 213, 230)',
-                activeBackgroundColor: 'rgb(146, 213, 230)',
-                inactiveBackgroundColor: 'rgb(228, 102, 64)'
+                activeTintColor: 'rgb(247,246,238)',
+                inactiveTintColor: 'rgb(46,97,77)',
+                activeBackgroundColor: 'rgb(46,97,77)',
+                inactiveBackgroundColor: 'rgb(247,246,238)'
             }}
         >
             <Tab.Screen name="Discover" component={DiscoverPage}

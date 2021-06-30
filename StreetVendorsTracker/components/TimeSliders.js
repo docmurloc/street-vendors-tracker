@@ -54,10 +54,10 @@ export default function TimeSlider({ day, handleValue }) {
         >
             <Text style={styles.text} >{days[day]} from {selected[0]} to {selected[1]}</Text>
             <MultiSlider
-
                 min={0}
                 max={24}
                 values={selected}
+                style={styles.slider}
                 onValuesChangeFinish={(values) => { setSelected(values) }}
 
             />
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     container: {
         margin: 5,
         alignItems: 'center',
-        backgroundColor: "rgba(146,213,230,1)",
-        shadowColor: "rgba(98,154,224,1)",
+        backgroundColor: "rgba(214,243,172,1)",
+        shadowColor: "rgba(190,202,173,1)",
         shadowOffset: {
             height: 2,
             width: 0
@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     },
     text : {
-        color : 'rgba(228, 102, 64,1)'
+        color : 'black'
+    },
+    slider : {
+        width : '50%'
     }
 });

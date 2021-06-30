@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { Text, StyleSheet, ScrollView, Image, View } from 'react-native';
 import { Title, Divider, Paragraph, Subheading } from 'react-native-paper';
 
 import firestore from '@react-native-firebase/firestore';
@@ -38,27 +38,32 @@ export default function VendorInformation({ navigation }) {
 
     return (
         <ScrollView
-        contentContainerStyle={styles.container}
+            contentContainerStyle={styles.container}
         >
-            <Image
-                style={styles.imageStand}
-                source={selectedStand?.photo ? selectedStand?.photo : defaultImage}
-            />
-            <Divider style={styles.divider} />
-            <Title>{selectedStand?.name}</Title>
-            <Divider style={styles.divider} />
-            <Subheading>Time : </Subheading>
-            {<Text>Aujourd'hui ouvert de  {time?.[currentDay]?.from} h jusqu'à {time?.[currentDay]?.to} h</Text> }
-            <Divider style={styles.divider} />
-            <Subheading>Phone : </Subheading>
-            <Text>{selectedStand?.phone}</Text>
-            <Divider style={styles.divider} />
-            <Subheading>Address : </Subheading>
-            <Text>{selectedStand?.address}</Text>
-            <Divider style={styles.divider} />
-            <Subheading>Desciption : </Subheading>
-            <Paragraph>{selectedStand?.description}</Paragraph>
-            <Divider style={styles.divider} />
+            <View
+                style={styles.information}
+            >
+
+                <Image
+                    style={styles.imageStand}
+                    source={selectedStand?.photo ? selectedStand?.photo : defaultImage}
+                />
+                <Divider style={styles.divider} />
+                <Title>{selectedStand?.name}</Title>
+                <Divider style={styles.divider} />
+                <Subheading>Time : </Subheading>
+                {<Text>Aujourd'hui ouvert de  {time?.[currentDay]?.from} h jusqu'à {time?.[currentDay]?.to} h</Text>}
+                <Divider style={styles.divider} />
+                <Subheading>Phone : </Subheading>
+                <Text>{selectedStand?.phone}</Text>
+                <Divider style={styles.divider} />
+                <Subheading>Address : </Subheading>
+                <Text>{selectedStand?.address}</Text>
+                <Divider style={styles.divider} />
+                <Subheading>Desciption : </Subheading>
+                <Paragraph>{selectedStand?.description}</Paragraph>
+                <Divider style={styles.divider} />
+            </View>
         </ScrollView>
     )
 }
@@ -67,6 +72,12 @@ const styles = StyleSheet.create({
     imageStand: {
         width: 300,
         height: 150
+    },
+    information: {
+        backgroundColor: 'rgb(214,243,172)',
+        padding: 15,
+        borderRadius: 15,
+        height: '100%'
     },
     fab: {
         position: 'absolute',
@@ -79,10 +90,13 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 5,
         alignItems: 'center',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
 
     },
     divider: {
         marginVertical: 5
+    },
+    text : {
+        color: 'rgb(46,97,77)'
     }
 });

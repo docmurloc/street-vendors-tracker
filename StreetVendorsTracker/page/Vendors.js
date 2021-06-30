@@ -45,7 +45,7 @@ export default function Vendors({ navigation }) {
             >
                 <IconButton
                     icon="camera"
-                    color={'rgb(98, 154, 224)'}
+                    color={'rgb(190,202,173)'}
                     size={30}
                     onPress={() => handleChooseImage()}
                 />
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent : 'space-around',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
     },
 });

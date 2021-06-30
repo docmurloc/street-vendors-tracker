@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { Text, StyleSheet, ScrollView, Image, View } from 'react-native';
 import { Title, Divider, Paragraph, Subheading } from 'react-native-paper';
 
 
@@ -20,19 +20,23 @@ export default function InformationItem() {
         <ScrollView
             contentContainerStyle={styles.container}
         >
-            <Image
-                style={styles.imageStand}
-                source={image ? image : defaultImage}
-            />
-            <Divider style={styles.divider} />
-            <Title>{name}</Title>
-            <Divider style={styles.divider} />
-            <Subheading>Price : </Subheading>
-            <Text>{price}</Text>
-            <Divider style={styles.divider} />
-            <Subheading>Desciption : </Subheading>
-            <Paragraph>{description}</Paragraph>
-            <Divider style={styles.divider} />
+            <View
+                style={styles.information}
+            >
+                <Image
+                    style={styles.imageStand}
+                    source={image ? image : defaultImage}
+                />
+                <Divider style={styles.divider} />
+                <Title>{name}</Title>
+                <Divider style={styles.divider} />
+                <Subheading>Price : </Subheading>
+                <Text>{price}</Text>
+                <Divider style={styles.divider} />
+                <Subheading>Desciption : </Subheading>
+                <Paragraph>{description}</Paragraph>
+                <Divider style={styles.divider} />
+            </View>
         </ScrollView>
     )
 }
@@ -45,9 +49,15 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: "rgba(255,232,225,1)",
+        backgroundColor: "rgba(247,246,238,1)",
         alignItems: 'center',
         paddingTop: 15
+    },
+    information: {
+        backgroundColor: 'rgb(214,243,172)',
+        padding: 15,
+        borderRadius: 15,
+        height: '100%'
     },
     divider: {
         marginVertical: 5

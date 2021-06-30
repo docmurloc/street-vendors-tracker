@@ -21,24 +21,24 @@ export default function Settings({ navigation }) {
         >
             <Button
                 title="Mon stand"
-                color="rgba(98,154,224,1)"
+                color="rgba(46,97,77,1)"
                 onPress={() => navigation.navigate('Vendors')}
             />
             {standData?.show ?
                 <Button
-                    title="Cachez mon stand"
-                    color="rgba(98,154,224,1)"
+                    title="Cacher mon stand"
+                    color="rgba(46,97,77,1)"
                     onPress={() => updateStandVisibility(false)}
                 />
                 :
                 <Button
-                    title="Montrez mon stand"
-                    color="rgba(98,154,224,1)"
+                    title="Montrer mon stand"
+                    color="rgba(46,97,77,1)"
                     onPress={() => updateStandVisibility(true)}
                 />}
             <Button
                 title="Déconnexion"
-                color='rgb(228, 102, 64)'
+                color='rgb(190,202,173)'
                 onPress={() => SignOut()}
             />
         </View>
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
     },
 });

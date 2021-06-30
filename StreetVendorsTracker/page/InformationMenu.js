@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         flex: 1,
-        backgroundColor: "rgba(255,232,225,1)"
+        backgroundColor: "rgba(247,246,238,1)"
     },
 });

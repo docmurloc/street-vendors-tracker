@@ -21,8 +21,6 @@ export default function VendorCard({ data, onPress }) {
                 title={data.name}
                 subtitle={data.address}
                 subtitleNumberOfLines={2}
-                subtitleStyle={styles.text}
-                titleStyle={styles.text}
             />
         </Card>
     )
@@ -36,8 +34,8 @@ const styles = StyleSheet.create({
     },
     card: {
         alignItems: "center",
-        backgroundColor: "rgba(146,213,230,1)",
-        shadowColor: "rgba(98,154,224,1)",
+        backgroundColor: "rgba(214,243,172,1)",
+        shadowColor: "rgba(190,202,173,1)",
         shadowOffset: {
             height: 3,
             width: 0
@@ -49,8 +47,5 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 5,
         width: '100%'
-    },
-    text: {
-        color: 'rgba(228, 102, 64,1)'
     }
 });
